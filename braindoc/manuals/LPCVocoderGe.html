@@ -1,0 +1,104 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>LPC-Vocoder Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>LPC-Vocoder Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/LPCVocoder368x412.jpg" width=368 height=412 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist LPC-Vocoder?:</strong>
+<br>
+LPC-Vocoder ist ein VST-PlugIn für die PC-Plattform zur Erzeugung von Vocoder-Sounds. Diese entstehen dadurch, dass man den Frequenzgang von einem Eignangssignal (dem so genannten Analysesignal oder Modulatorsignal) auf ein zweites Eingangssignal (das so genannte Synthese- oder Carriersignal) überträgt. Beim klassischen Vocoder kommen zur Analyse und Synthese Filterbänke zum Einsatz, beim LPC-Vocoder hingegen kommt ein einziges adaptives Filter zum Einsatz, welches jedoch komplexe Frequenzgänge mit vielen Peaks realisieren kann. LPC ist eine Akürzung für Linear Predictive Coding, eine Technik aus der Signalverarbeitung, die zur Komprimierung von Audiosignalen z.B. in der digitalen Mobilfunktechnik verwendet wird. Zur Analyse des Frequenzganges wird dabei versucht das Eingangssignal aufgrund seiner vergangenen Werte vorherzusagen (Prediction = Vorhersage). Aufgrund des Fehlers, der dabei gemacht wird, kann ein so genanntes Prädiktionsfilter an das Signal angepasst werden. Beim LPC-Vocoder stehen folgende Parameter zur Verfügung:
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Analyse-Parameter:</strong>
+<ul>
+<li><strong>PreEmph:</strong>
+Ohne in die technischen Details gehen zu wollen, kann gesagt werden, dass bei der Linearen Prädiktion davon ausgegangen wird, dass das zu analysierende Signal aus einem weissen Anregungssignal besteht, welches danach durch ein Filter geformt wurde - man spricht hier von einem Quelle-Filter-Modell. Wenn dieses Signalmodell jedoch nicht zutrifft, und dass Anregungssignal nicht weiß war, dann kann durch eine geeignete Pre-Emphase, der Frequenzgang des Anregungssignals ausgeglichen werden. Von weißen Signalen spricht man, wenn alle enthaltenen Frequenzen mit gleicher Lautstärke im Signal vorhanden sind - z.B. ein Impulskamm oder weisses Rauschen (also ziemlich höhenlastige Signale). Mit PreEmph stellt man nun den Koeffizienten eines Hochpassfilters ein, das genau diesen Ausgleich realisieren soll. Wenn der Koeffizient genau gleich 1 ist, dann handelt es sich bei dem Filter um einen einfachen Differenzierer. Meistens ist eine solche Einstellung von 1 oder sehr nahe an 1 am sinnvollsten. 
+
+<li><strong>Ord:</strong>
+Hier stellt man die Ordnung des Prädiktions-Filters ein. Höhere Filterordnungen sind in der Lage komplexere Frequenzgänge zu realisieren, brauchen dafür aber auch mehr Rechenleistung. 
+
+<li><strong>Learn:</strong>
+Da wir es mit einem adaptiven Filter zu tun haben, kann man hier die so genannte Adaptions- oder Lernrate einstellen. Hohe Lernraten führen zu einem Filter, das den Änderungen im Frequenzgang des Signals schneller folgen kann.
+
+<li><strong>Forget:</strong>
+Wenn das Filter ein unendliches Gedächtnis hätte, dann würde die gesamte Vergangenheit des Eingangssignals, den aktuellen Frequenzgang des Filters beeinflussen. Dies ist jedoch in der Regel nicht erwünscht, da ja die sehr weit entfernte Vergangenheit nicht mehr den Frequenzgang des Filters zum "Jetzt"-Zeitpunkt bestimmen soll. Daher kann man hier eine "Vergessens-Rate" einstellen.
+
+<li><strong>Smooth:</strong>
+Dieser Parameter glättet den Lernprozess des Filters - man kann sich das so vorstellen, dass bei höheren smooth-Werten der Frequenzgang des Filters nicht so stark hin und herzappelt.
+
+<li><strong>Env-Att:</strong>
+Zusätzlich zum Frequenzgang wird auch noch die Gesamtamplitude des Signals mit Hilfe eines Envelope-Followers analysiert, um die Möglichkeit zu haben nicht nur den Frequenzgang des Analysesignals dem Synthesesignal überzustülpen, sondern auch dessen Lautstärkeverlauf. Hier wird die Attack-Zeit des Envelope-Followers eingestellt.
+
+<li><strong>Env-Rel:</strong>
+Hier wird die Release-Zeit des Envelope-Followers eingestellt.
+</ul>
+
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Synthese-Parameter:</strong>
+
+<ul>
+<li><strong>Whitening:</strong>
+Der kleine Schalter neben dem Schriftzug "Whitening" schaltet ein Filter zu, dass das Carriersignal zunächst so filtert, dass das Spektrum des Carriers möglichst weiß ist, d.h. dass alle auftretenden Frequenzen eine möglichst gleiche Amplitude haben. Der Algorithmus dieses whitening-Filters ist genau derselbe, der zur Analyse des Modulatorsignals verwendet wird - man macht sich hierbei zunutze, dass ein Prediction-Error-Signal (Vorhersagefehler-Signal) immer eine "geweißte" Version des Eingangssignals ist. Daher entspricht der Parametersatz des whitening-Filters genau dem des adaptiven Analysefilters (bis auf den PreEmphase-Regler).
+
+<li><strong>EnvAmt:</strong>
+Dieser Regler regelt, wie stark der Lautstärkeverlauf des Modulatorsignals auf den Lautstärkeverlauf des Carriersignals wirken soll. Die Einstellung erfolgt in Prozent.
+
+<li><strong>FiltAmt:</strong>
+Dieser Regler regelt, wie stark der Frequenzgang des Modulatorsignals den Frequenzgang des Carriersignals beeinflussen soll. Die Einstellung erfolgt ebenfalls in Prozent. 
+</ul>
+
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Mixer-Parameter:</strong>
+<br>
+Innerhalb des Analyse-/Syntheseprozesses fallen verschiedene Signale an, die mit dem Mixer auf den Ausgang des PlugIns gegeben werden können:
+
+<ul>
+<li><strong>Voco:</strong>
+Dies ist das eigentliche Vocoder-Ausgangssignal - also das Carriersignal, über welches der Frequenzgang und Lautstärkeverlauf des Modulatorsignals gelegt wurde.
+
+<li><strong>Err:</strong>
+Dies ist das Prediction-Error-Signal des Analysefilters. Dieses Signal enthält die nicht vorhersagbaren Anteile des Modulatorsignals. Dies sind im wesentlichen Transienten und das Anregungssignal im zugrunde liegenden Quelle-Filter Modell.
+
+<li><strong>Mod:</strong>
+das durchgeschliffene Modulatorsignal
+
+<li><strong>Car:</strong>
+das durchgeschliffene Carriersignal
+
+<li><strong>whCar:</strong>
+das geweißte Carriersignal, also das Ausgangssignal des whitening-Filters (steht nur zur Verfügung, wenn "whitening" eingeschaltet ist).
+
+<li><strong>Vol:</strong>
+Dies ist der Regler für die globale Ausgangslautstärke.
+</ul>
+
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Vocoder in der Praxis:</strong>
+<br>
+Anders als die meisten anderen Effekte ist der Vocoder ein Effekt, der zwei (voneinander unabhängige) Eingangssignale benötigt. Daher kann man ihn im Mischpult des verwendeten Sequenzers nicht einfach in einen einen Kanal-Insert einpluggen. Stattdessen empfehle ich folgende Vorgehensweise: Man legt eine Gruppenspur an und routet die beiden Signale, die man als Carrier und Modulator verwenden will auf diese Gruppenspur. Der LPC-Vocoder erwartet das Carriersignal auf dem linken und das Modulatorsignal auf dem rechten Eingangskanal, daher wird der Pan-Regler im Kanalzug des Carriers auf hart links eingestellt, der Pan-Regler im Kanalzug des Modulators auf hart rechts. Im Kanal-Insert der Gruppenspur pluggt man nun den Vocoder ein, die Gruppenspur enthält nun das Ausgangssignal des Vocoders. Speziell zum LPC-Vocoder ist zu sagen, dass die Einstellung der einzelnen Parameter etwas Feingefühl erfordert, da bestimmte Einstellungen manchmal zu sehr lauten Ausgangssignalen und im Extremfall sogar zu instabilen Synthesefiltern führen können und außerdem die Parameter ziemlich stark miteinander interagieren (speziell die Lern- und Vergessensrate, aber auch die anderen Parameter). Daher empfehle ich, erstmal die Presets anzutesten.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

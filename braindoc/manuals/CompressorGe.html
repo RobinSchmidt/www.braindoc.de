@@ -1,0 +1,68 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Compressor Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Compressor Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Compressor272x248.jpg" width=272 height=248 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Compressor?:</strong>
+<br>
+Compressor ist ein VST-PlugIn für die PC-Plattform zur Reduzierung der Dynamik des Eingangssignals. Kompressoren tun dies, indem sie die Amplitudenhüllkurve des Eingangssignals analysieren und das Signal absenken, wenn es einen bestimmten Schwellwert überschreitet. Dadurch werden kurzzeitig auftretende Peaks im Signal in ihrer Amplitude reduziert, so dass man das Gesamtsignal nach der Kompression (übersteuerungsfrei) verstärken kann. Als Endresultat bekommt man somit ein Signal, bei dem die lauten Stellen ungefähr so bleiben wie sie sind, die leiseren Stellen jedoch verstärkt werden. Dies führt zu einem Signal dessen Pegel nicht allzu stark schwankt und das dadurch insgesamt lauter und "kompakter" wirkt.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter:</strong>
+<ul>
+<li><strong>In:</strong>
+Hier wird ein Verstärkungsfaktor für das Eingangssignal eingestellt. Diese Verstärkung passiert vor der Kompression und ermöglicht es somit, die Kennlinie des Kompressors in verschiedenen Bereichen anzusteuern (Die Kennlinie ist die Funktion, die den Ausgangspegel (in dB) in Abhängigkeit vom Eingangspegel darstellt).
+
+<li><strong>Link:</strong>
+Mit diesem Schalter entscheidet man, ob beide Kanäle gleich bearbeitet werden sollen (Link an). In diesem Fall wird für die Amplitudenhüllkurve der Mittelwert aus beiden Kanälen genommen. Wenn Link deaktiviert ist, wird jeder Kanal gemäß seiner eigenen Amplitudenhüllkurve bearbeitet.
+
+<li><strong>Thr:</strong>
+steht für "Threshold" - es handelt sich hierbei also um den Schwellwert des Kompressors. Dies ist derjenige Lautstärkepegel, oberhalb dessen eine Absenkung des Signals einsetzt.
+
+<li><strong>Rat:</strong>
+steht für "Ratio". Hier stellt man ein, wie stark Signale oberhalb des Thresholds abgesenkt werden. Die Einstellung erfolgt in dB(Ein)/dB(Aus), d.h. wenn z.B. eine Ratio von 4:1 eingestellt ist, dann liegen Eingangssignale, die 4 dB über dem Threshold liegen, nach der Kompression nur noch 1 dB über dem Threshold.
+
+<li><strong>Knee:</strong>
+Eine klassische Kompressor-Kennlinie ist unterhalb des Thresholds einfach eine Linie mit einer Steigung von 45° - also eine identische Abbildung. Oberhalb des Thresholds knickt die Linie ab und hat danach eine Steigung, die geringer ist als 45° (die Steigung ist dann 1/Ratio). Um dieses Abknicken weniger abrupt zu gestalten, wurden so genannte softknee-Kennlinien eingeführt, bei denen der Wechsel der Steigungen allmählich erfolgt. Hier kann man eine Überblendung zwischen einer einfachen abknickenden Kennlinie und einer "weicheren" Kennlinie einstellen (die oberhalb des Thresholds einer tanh-Funktion folgt).
+
+<li><strong>Att:</strong>
+Die Attack-Zeit des Hüllkurvenverfolgers, der die Amplitudenhüllkurve analysiert. Je geringer der Wert, desto schneller regelt der Kompressor zurück, wenn der Threshold überschritten wurde.
+
+<li><strong>Rel:</strong>
+Die Release-Zeit des Hüllkurvenverfolgers. Je geringer der Wert, desto schneller kehrt der Kompressor nach Unterschreiten des Thresholds wieder zu einer Verstärkung von 1 zurück. 
+
+<li><strong>LA:</strong>
+steht für "Look-Ahead". Mit dieser Funktion kann der Kompressor die auftretenden Peaks quasi schon vorausahnen. Erreicht wird dies, indem das zu bearbeitende Eingangssignal etwas verzögert wird, während zur Analyse der Amplitudenhüllkurve nach wie vor das unverzögerte Signal herangezogen wird. Die dadurch entstehende Input/Output Latenz können moderne VST-Host-Programme automatisch ausgleichen.
+
+<li><strong>Out:</strong>
+Verstärkung für das Signal nach dem Kompressor. Kompression zieht in der Regel eine Verminderung der Gesamtlautstärke nach sich, was hiermit ausgeglichen werden kann.
+
+<li><strong>Auto:</strong>
+Wenn dieser Schalter aktiviert ist, wird eine automatische Verstärkung des Kompressor-Ausgangssignals vorgenommen. Dieser Auto-Gain Schalter arbeitet völlig unabhängig von der manuellen Verstärkung des Ausgangssignals - diese kann also weiterhin zusätzlich genutzt werden.
+
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

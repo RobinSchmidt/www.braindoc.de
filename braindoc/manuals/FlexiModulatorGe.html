@@ -1,0 +1,265 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Flexi-Modulator Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Flexi-Modulator  Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/FlexiModulator544x728.jpg" width=544 height=728 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Flexi-Modulator?:</strong>
+<br>
+Flexi-Modulator ist ein VST-PlugIn zur Erzeugung von so genannten Delayline-basierten Modulationseffekten für die PC-Plattform. Die Palette dieser Effekte reicht vom einfachen Vibrato über Ensemble, Chorus und Flanger bis hin zu modulierten Echo-Effekten. Slapback/Doubling und Resonator-Effekte sind ebenfalls möglich (obwohl dies eigentlich keine Modulationseffekte sind). Die einzelnen Effekte unterscheiden sich dabei lediglich in der Einstellung bestimmter Parameter wobei die Übergänge recht fließend sind. Da bei Flexi-Modulator die entsprechenden Parameter in einem sehr weiten Bereich einstellbar sind, kann Flexi-Modulator all diese Effekte (sowie natürlich auch alles was irgendwo dazwischen liegt) in einem einzigen PlugIn realisieren. 
+
+<p>
+<strong>Und was ist mit Phasing?:</strong>
+<br>
+Gelegentlich wird im Zusammenhang mit Modulationseffekten auch der Phaser genannt. Phasing jedoch - obwohl klanglich verwandt mit dem Flanger - liegt eine völlig andere Technik zugrunde. Der Phaser basiert nicht auf einer Delayline, sondern auf einer Kette von Allpass-Filtern. Phasing ist daher mit diesem PlugIn nicht möglich.
+
+<p>
+<strong>Wie funktionierts?:</strong>
+<br>
+Alle oben genannten Effekte basieren darauf, das Eingangssignal mit Hilfe einer Delayline zu verzögern und dem Originalsignal beizumischen. Interessant wird die Sache dann, wenn die Verzögerungszeit einer Delayline z.B. durch einen LFO (Low Frequency Oscillator) moduliert wird. Dadurch nämlich enthält das Augangssignal der Delayline eine Tonhöhenmodulation (also ein Vibrato) das im Originalsignal nicht enthalten war. Wenn man jetzt mehrere Delaylines mit verschiedenen LFO-Frequenzen moduliert und das ganze dann zusammenmischt (und das Originalsignal auch noch dazumischt) erhält man einen schönen Ensemble-Effekt. Man kann auch das Ausgangssignal einer Delayline wieder auf den Eingang zurückkoppeln - so entstehen entweder Echo-Effekte (bei langen Delays, d.h. größer als 50 ms) oder Resonator-Effekte (bei kurzen Delays - die Resonanzfrequenz ist dann umgekehrt proportional zur Delay-Zeit). 
+
+<p>
+<strong>Stichwort Latenz:</strong>
+<br>
+Je nachdem in welchem Kontext das PlugIn eingesetzt wird, können interne Latenzen entstehen. Schließlich ist das Ausgangssignal einer Delayline (also das "wet"-Signal) gegenüber dem Eingangssignal immer um einen gewissen Zeitversatz verzögert. Diese Verzögerung des "wet"-Signals kann erwünscht sein (z.B. wenn das PlugIn als Send/Return-Effekt oder als Insert-Effekt mit trockenen Signalanteilen benutzt wird, z.B. um einen Echo-Effekt zu erzeugen). Es gibt jedoch auch Fälle, in denen diese Verzögerung eigentlich nicht erwünscht ist. Ein solcher Fall tritt bei einfachen Vibrato-Effekten auf - hier würde man das PlugIn als Insert-Effekt nutzen mit einem "wet"-Anteil von 100%. Es würde also nur das verzögerte Signal ausgegeben werden. Die interne Latenz entspricht dann genau der mittleren Delay-Zeit der Delayline. Die automatische Latenzkompensation diverser VST-Host-Programme basiert darauf, dass das PlugIn dem Host mitteilt, wie viele Samples Latenz im PlugIn entstehen - bei FFT-basierten PlugIns zum Beispiel würde man die FFT-Puffergröße als Latenzzeit an den Host übermitteln. Der Flexi-Modulator jedoch, geht immer von einer internen Latenz von Null aus, da das PlugIn ja nicht erkennen kann, in welchem Kontext es gerade benutzt wird. Hier muss der Benutzer also gegebenenfalls selbst Hand anlegen. Wenn die mittlere Delayzeit allerdings nur wenige Millisekunden beträgt, kann darauf meist verzichtet werden.
+
+<p>
+<strong>Das Konzept:</strong>
+<br>
+Flexi-Modulator bietet 6 voneinander unabhängige Delaylines, deren Ausgangssignal jeweils individuell dem rechten und/oder linken Ausgangskanal zugemischt werden kann. Jede Delayline verfügt über eine Rückkopplungsschleife mit integriertem Hoch- und Tiefpassfilter und einen eigenen LFO mit zumischbarem Rauschgenerator zur Modulation der Delayzeit. Die Parametersätze jeder Delayline sind somit auch identisch, die Parameter jeder Delayline sind im Einzelnen:
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Allgemeine Parameter jeder Delayline:</strong>
+<ul>
+<li><strong>Mix:</strong>
+Da am Eingang des PlugIns Stereosignale ankommen, kann mit dem Mix-Parameter eingestellt werden, in welchem Verhältnis die beiden Eingangkanäle auf die Delayline gelangen sollen: Linksanschlag: nur der linke Kanal geht auf die die Delayline, Mitte: beide Kanäle werden zu einem Monosignal gemischt und gehen auf die Delayline, Rechtsanschlag: nur der rechte Kanal geht auf die Delayline
+
+<li><strong>L:</strong>
+Dieser Parameter bestimmt die Lautstärke des Ausgangssignals der Delayline im linken Ausgangskanal des PlugIns. Der Wertebereich dieses Reglers ist allerdings nicht - wie für Lautstärkeregler oft üblich - in dB skaliert, sondern ist einfach ein Faktor zwischen -1 und 1. Dies hat den Grund, dass mit einer dB-Skalierung keine negativen Faktoren möglich wären. Manchmal möchte man aber eventuell das Ausgangssignal einer Delayline gegenphasig auf den beiden Stereo-Kanälen haben. Wenn der Regler in Mittelstellung  (0) ist, wird das Signal überhaupt nicht auf den linken Ausgangskanal gegeben, bei Rechtsanschlag (1) mit voller Amplitude, bei Linksanschlag (-1) mit voller Amplitude und umgekehrter Phase.
+
+<li><strong>R:</strong>
+Das gleiche für den rechten Ausgangskanal des PlugIns. Wenn beide Regler (L und R) in Mittelstellung, also auf Null, stehen, dann deaktiviert sich die entsprechende Delayline. Somit verbraucht jede Delayline nur dann Rechenleistung, wenn deren Ausgangssignal auch verwendet wird.
+
+<li><strong>Dly:</strong>
+Dieser Parameter bestimmt die Verzögerungszeit der Delayline. Da die Verzögerungszeit vom LFO moduliert wird, handelt es sich hierbei jedoch nur um einen Mittelwert. Die (mittlere) Verzögerungszeit ist der entscheidende Parameter, wenn es darum geht, zu entscheiden, welchen Effekt man erzielen möchte. Eine sehr kleine mittlere Verzögerungszeit (im Bereich von wenigen Millisekunden) ergibt einen Flanger-Effekt. Größere mittlere Verzögerungszeiten (ca. zwischen 10 und 25  ms) ergeben einen Chorus Effekt. Noch größere Verzögerungszeiten (mehr als 50 ms) ergeben einen Echo-Effekt.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Feedback-Parameter (FB):</strong>
+<ul>
+<li><strong>Amt:</strong>
+steht für Amount. Hier stellt man ein, wie stark das Ausgangssignal der Delayline auf den Eingang zurückgekoppelt wird. Die Einstellung erfolgt in Prozent. Die Rückkopplung kann positiv oder negativ sein und bis zu 150% aufgedreht werden, ab 100% wird das ganze System jedoch normalerweise instabil, d.h. es geht in die Selbstoszillation. Jedoch kann das Filter in der Rückkopplungsschleife auch bei Faktoren knapp über 100% das rückgekoppelte Signal noch so weit abschwächen, das dennoch keine Selbstoszillation auftritt. Dies ist auch der Grund, warum der Regelbereich so großzügig ausgelegt wurde. Außerdem kann die Selbstoszillation auch interessante Klänge produzieren - das PlugIn arbeitet dann sozusagen nicht mehr als Effekt sondern als Klangerzeuger. Innerhalb der Rückkopplungsschleife befindet sich auch ein Clipper, so dass das PlugIn auch in der Selbstoszillation keine unendlichen Amplituden produziert.
+
+<li><strong>LPF und HPF:</strong>
+Hier werden die Cutoff-Frequenzen für das Tiefpass- und das Hochpassfilter innerhalb der Rückkopplungsschleife eingestellt. Es handelt sich um Filter erster Ordnung mit einer Flankensteilheit von 6 dB/Okt, die einfachen analogen RC-Filtern nachempfunden sind.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Die LFO's:</strong>
+<br>
+Jede Delayline verfügt über ihren eigenen LFO (Low Frequency Oscillator) zur Modulation der Delayzeit. Da LFO's generell genutzt werden um bestimmte Klangparameter zeitlich zu modulieren ist es für einen LFO wichtig, dass er interessante Zeitverläufe erzeugen kann - im Gegensatz zu normalen Oszillatoren in Synthesizern, bei denen meist eher die spektrale Zusammensetzung der Ausgangswellenform interessiert. Daher bieten die LFO's in Flexi-Modulator eine spezielle Auswahl an Wellenformen und diverse Parameter um diese Wellenformen noch zu verbiegen. Die Parameter sind im Einzelnen:
+
+<ul>
+<li><strong>Wave:</strong>
+Hier wird die Grundwellenform des Oszillators ausgewählt. Zusätzlich zu den gewohnten Standard-Wellenformen stehen einige Wellenformen zur Verfügung, die sich aus Addition der Standardwellenformen mit sich selbst ergeben, wobei jeweils die gleiche Wellenform in mehreren Oktavlagen abgespielt wird. Am Beispiel lässt sich das am einfachsten verdeutlichen: die Wellenform "2Sines" besteht aus zwei Sinusschwingungen (gleicher Amplitude), wobei die zweite eine Oktave über der ersten liegt, also mit doppelter Frequenz schwingt. Die Wellenform "3Sines" aus dreien - die dritte liegt hier zwei Oktaven über der ersten, schwingt also mit vierfacher Frequenz. Damit kann man einerseits einen großen Modulationsbogen erzeugen, der z.B. über 4 Takte geht, innerhalb dessen wird aber noch ein kleinerer Modulationsbogen zweimal durchlaufen der nur über zwei Takte geht, und ein noch kleinerer der viermal durchlaufen wird und über einen Takt geht. Es sind hier sozusagen "fraktale", also selbstähnliche Modulationsverläufe möglich. Bei den anderen Wellenformen ist es analog. Ein "Alt" im Namen der Wellenform steht für "alternating sign" - hier werden die ungeraden Oktaven (1, 3, 5, …) mit positivem Vorzeichen und die geraden (2, 4, 6, …) mit negativem Vorzeichen addiert.
+
+<li><strong>Frq:</strong>
+Hier stellt man die Frequenz des LFO's ein. Je nachdem, in welchem sync-Mode man sich befindet, erfolgt die Einstellung entweder in Hz (wenn die LFO-Frequenz nicht zum Host synchronisiert wird), als Notenlänge (wenn die LFO-Frequenz zum Host synchronisiert wird), oder als Offset zum gespielten MIDI-Notenwert (wenn die LFO-Frequenz durch MIDI-Noten bestimmt wird). Im zweiten Fall gibt die Notenlänge diejenige Zeit an, die der LFO benötigt um eine vollständige Periode zu durchlaufen. 
+
+<li><strong>Amt:</strong>
+steht hier auch wieder für Amount - dieser Parameter stellt also ein, wie stark der LFO die Delayzeit moduliert. Oft wird dieser Parameter auch "Depth" genannt - es handelt sich hier also um die Modulationstiefe. Die Einstellung erfolgt in Prozent, wobei 100% den maximal möglichen Modulationshub darstellen. Nun ist der maximal mögliche Modulationshub natürlich abhängig von der eingestellten (mittleren) Delayzeit - diese kann nämlich von ihrem Ausgangswert höchstens bis auf Null heruntermoduliert werden. Dieser Zusammenhang sorgt dafür, dass bei höheren Einstellungen von "Dly" auch der absolute Modulationshub größer wird, bzw. anders gesagt, dass bei höheren mittleren Verzögerungszeiten tiefere Vibratos möglich sind - bis hin zu extremen "Wobbler"-Effekten. Also nicht wundern, wenn sich bei Verstellung von "Dly" die Modulationstiefe mit ändert sondern einfach mit "Amt" nachregeln.
+
+<li><strong>Sym:</strong>
+Dieser Parameter regelt die zeitliche Symmetrie zwischen den beiden Halbwellen des Oszillators - bei Mittelstellung (50%) werden beide Halbwellen gleich schnell durch laufen. Wenn der Symmetrie-Parameter kleiner als 50% ist, wird die erste Halbwelle schneller durchlaufen und die zweite Halbwelle entsprechend langsamer, so dass insgesamt die Frequenz gleich bleibt. Die Änderung des Symmetrieparameters ist im Prinzip nichts anderes als Pulsweitenmodulation, wenn es sich bei der erzeugten Wellenform um eine Pulswelle handelt.
+
+<li><strong>Phs:</strong>
+Die Startphase des Oszillators, also derjenige Punkt innerhalb der Wellenform, an dem der Oszillator startet wenn er neu getriggert wird. Das Triggern kann entweder über den entsprechenden Button erfolgen oder via MIDI-Events - aber dazu später mehr.
+
+<li><strong>APF:</strong>
+Dieser Regler regelt die Kennfrequenz eines Allpass-Filters, das dem Oszillator nachgeschaltet ist. Ein Allpass-Filter lässt alle Frequenzen ungehindert (also mit gleicher Amplitude) passieren, verursacht jedoch eine frequenzabhängige Phasenänderung. Damit können die Phasen der einzelnen Obertöne innerhalb der Oszillatorwellenform gegeneinander verschoben werden, was mit einer Änderung des Zeitverlaufs einhergeht. Würde man Oszillatorsignale im Hörbereich erzeugen und sich mit und ohne Allpass-Filter anhören, würden sich diese vom Klangeindruck her kaum unterscheiden, da das menschliche Gehör für Phasenbeziehungen zwischen Obertönen relativ unempfindlich ist (zumindest bei gehaltenen Tönen, bei Transienten sieht die Sache anders aus). Da wir es bei LFO's jedoch mit Signalen zu tun haben, bei denen der Zeitverlauf (und nicht die Klangfarbe, die im Wesentlichen vom Amplitudenspektrum abhängt) entscheidend ist, macht ein solches Allpass-Filter zur Verbiegung der Wellenform hier durchaus Sinn.
+
+<li><strong>HPF:</strong>
+Es gibt auch noch ein Hochpassfilter hinter dem Oszillator. Dessen Grenzfrequenz wird mit diesem Regler geregelt. Das Hochpass hat natürlich auch einen Einfluss auf die Signalform - so macht es z.B. aus einem Sägezahn eine Wellenform die eher einer Kondensatorladekurve ähnelt oder verbiegt die eigentlich konstanten Phasen der Rechteckwelle zu exponentiellen Abklingkurven.
+
+<li><strong>Att und Rel:</strong>
+Nach Allpass und Hochpass fehlt ja eigentlich nur noch ein Tiefpassfilter. Im Zeitbereich betrachtet dienen Tiefpassfilter vor allem dazu um scharfe Kanten bzw. Sprünge im Signal (wie sie z.B. bei Rechteck- und Sägezahnwelle auftreten) zu glätten. Wenn man ein Tiefpassfilter einsetzt um den Zeitverlauf eines Kontrollsignals zu glätten bezeichnet man so etwas im Sounddesigner-Jargon auch als Slew-Rate-Limiter. Ein Sprung in der Oszillatorwellenform hätte auch einen Sprung der Delayzeit zur Folge, was sich akustisch einfach als Knacksen äußern würde. Deshalb glättet Flexi-Modulator diese Kanten mit einem ebensolchen Slew-Rate-Limiter, nur das dieser zusätzlich noch zwischen Sprüngen nach oben und nach unten unterscheidet. "Att" (Attack) bestimmt die Anstiegszeit bei einem Sprung nach oben, "Rel" (Release) die Abklingzeit bei einem Sprung nach unten. Technisch ist es nichts anderes als ein Tiefpass, dass seine Cutoff-Frequenz immer zwischen zwei Frequenzen hin- und herschaltet, je nachdem ob gerade eine ansteigende oder abfallende Signalflanke reinkommt.
+
+<li><strong>Ns:</strong>
+Hier stellt man die Lautstärke des zumischbaren Rauschgenerators ein. Wenn dem LFO-Signal Rauschen beigemischt wird (oder nur der Rauschgenerator benutzt wird, entstehen unregelmäßige, zufällige Modulationen).
+
+<li><strong>LPF:</strong>
+Da der Rauschgenerator Frequenzen im gesamten Spektrum erzeugt kann man dessen Ausgangssignal noch mit einem Tiefpassfilter filtern. Hier wird dessen Cutoff-Frequenz eingestellt.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Globale Parameter:</strong>
+<br>
+An der rechten Seite des PlugIn-Fensters befinden sich die globalen Parameter. Diese sind im Einzelnen (von oben nach unten und von links nach rechts):
+
+<ul>
+<li><strong>Dry-HPF:</strong>
+Hier stellt man die Cutoff-Frequenz eines Hochpass-Filters ein durch welches das trockene Signal läuft (auch hier handelt es sich um ein einfaches "RC"-Filter).
+
+<li><strong>Dry-LPF:</strong>
+Ein Tiefpassfilter gibt es auch…
+
+<li><strong>Dry/Wet:</strong>
+Das Mischungsverhältnis zwischen trockenem und Effektsignal.
+
+<li><strong>Wet-Env:</strong>
+Es gibt in diesem PlugIn einen Envelope-Follower, der die momentane Lautstärke des Eingangssignal analysiert. Mit dem so gewonnen Envelope, kann das "wet"-Signal bearbeitet werden. Dies kann z.B. dazu benutzt werden um die Transienten der Eingangssignale trocken zu belassen und nur in den gehaltenen Phasen Effektsignale dazuzugeben. Der "Wet-Env" Regler, regelt, wie stark der Amplitudenverlauf des Eingangssignals auf die Ausgangslautstärke des "wet"-Signals wirken soll.
+
+<li><strong>At:</strong>
+Ein solcher Envelope-Follower hat immer einstellbare Attack- und Release-Zeiten. Hier wird die Attack-Zeit eingestellt.
+
+<li><strong>Re:</strong>
+Die Release-Zeit des Envelope-Followers.
+
+<li><strong>Wet-HPF and Wet-LPF:</strong>
+Naja, wie Ihr sicher schon vermutet handelt es sich hier um Cutoff-Frequenzen für Hoch- und Tiefpass-Filter für das "wet"-Signal.
+
+<li><strong>Env->LFO:</strong>
+Der oben schon erwähnte Envelope-Follower kann auch dazu genutzt werden um die Tiefe der Modulation durch die LFO's zu regeln. Damit kann man z.B. ein Vibrato erzielen, dass nur auf die länger stehenden Töne wirkt, also sich erst langsam aufschwingt.
+
+<li><strong>Output:</strong>
+Dies ist ein Regler für die allgemeine Ausgangslautstärke.
+
+<li><strong>Trigger:</strong>
+Mit diesem Button werden die Oszillatoren neu getriggert, d.h. sie werden auf ihren jeweiligen Startpunkt (der mit "Phs" eingestellt wird) zurückgesetzt. Die Oszillatoren können aber auch über Note-On Events auf MIDI-Kanal 1 getriggert werden.
+
+<li><strong>Sync-Mode:</strong>
+Hier wählt man einen von acht Synchronisations-Modi. Sowohl die LFO's als auch die (mittleren) Delay-Zeiten können zum Tempo der VST-Hostsoftware synchronisiert werden. Wenn die LFO's zum Tempo synchronisiert wird (alle Menüpunkte, in denen "bpm2freq" vorkommt) regeln die Frq-Regler der LFO's die Notenlänge, die die LFO's für eine vollständige Periode benötigen. Dies ist nützlich, wenn man temposynchrone Modulationen braucht.  Wenn die Delayzeit zum Tempo synchronisiert wird (alle Menüpunkte, in denen "bpm2Dly" vorkommt), entspricht die Delayzeit der eingestellten Notenlänge. Dies ist zum Beispiel nützlich für temposynchrone Echo-Effekte. Sowohl LFO-Frequenzen als auch Delay-Zeiten können aber auch durch hereinkommende MIDI-Noten bestimmt werden (Details siehe MIDI-Implementation). Wenn die MIDI-Note die Delay-Zeit bestimmt (alle Menüpunkte, in denen "note2Dly" vorkommt), können tonale und auf dem Keyboard spielbare Resonator-Effekte erzeugt werden. Bei MIDI-abhängigen LFO-Frequenzen werden Frequenzmodulationen mit der jeweils gespielten Tonhöhe erzeugt (der LFO mutiert hier also zu einem Oszillator im Hörbereich). Die jeweiligen Regler ("Dly", und "Frq") stellen dann einen Offset für die Tonhöhe in der jeweiligen Delayline ein.
+
+<li><strong>Parameter:</strong>
+Zeigt an, welcher Parameter als letztes verändert wurde.
+
+<li><strong>Value:</strong>
+Zeigt an, auf welchen Wert der zuletzt geänderte Parameter gesetzt wurde.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parametereinstellungen für einzelne Effekte:</strong>
+<ul>
+<li><strong>Echo:</strong>
+Das Echo ist ein relativ einfacher Effekt. Die mittlere Delay-Zeit wird so eingestellt, dass das menschliche Gehör das trockene und das verzögerte Signal als separate akustische Ereignisse wahrnimmt - ein ungefährer Richtwert ist: ab 50 ms aufwärts. Mit Feedback können Mehrfach-Echos erzielt werden, wobei diese mit Hilfe des Tiefpasses in der Feedback-Schleife mit jeder Widerholung dumpfer und/oder mit Hilfe des Hochpasses dünner werden können. Die Modulation der Delay-Zeit durch den LFO ist normalerweise deaktiviert ("Amt" auf Null) - wenn man die Modulation benutzt, bekommt das Echo ein Vibrato.
+
+<li><strong>Slapback:</strong>
+Dies ist ein Effekt der entsteht, wenn das Gehör nicht mehr in der Lage ist, trockenes und verzögertes Signal als zeitlich separate Ereignisse wahrzunehmen weil diese zu schnell aufeinander folgen. Dieser Effekt simuliert die Überlagerung zwischen Direktschall und reflektiertem Schall wenn eine Klangquelle vor einer reflektierenden Wand positioniert ist. Typische Werte für die Delay-Zeit liegen zwischen 25 und 50 ms. Feedback und Modulation sind deaktiviert - daher ist dies eigentlich kein Modulationseffekt.
+
+<li><strong>Vibrato:</strong>
+Vibrato ist musikalisch gesehen eine Modulation der Tonhöhe. Mit einer Delay-Line kann dieser Effekt erzielt werden, wenn eine relativ kurze Delay-Zeit im Bereich von wenigen ms durch einen (sinusförmigen) LFO moduliert wird. Es wird nur das Ausgangssignal der Delay-Line abgehört - also "Dry/Wet" auf 100% wet einstellen. Bei längeren mittleren Delay-Zeiten ändert sich die Tonhöhe (bei gleicher "Amt"-Einstellung) so stark, dass man die so erzielten Effekte eher als "Wobbler" bezeichnen kann. Bei einer Dreieckswellenform entsteht ein Hin- und Herspringen zwischen zwei Tonhöhen, also ein "Triller".
+
+<li><strong>Ensemble/Chorus:</strong>
+Wenn man das Ausgangssignal der auf "Vibrato" eingestellten Delay-Line mit dem Originalsignal mischt hat man schon zwei leicht unterschiedliche Signale, die sich ein bisschen so anhören als würden zwei gleiche Instrumente gleichzeitig gespielt. Wenn man zur Modulation der Delayzeit anstatt des LFO's tiefpassgefiltertes Rauschen nimmt, wird das entstehende "wet"-Signal unregelmäßiger und simuliert natürlich auftretende Tonhöhenschwankungen. Jetzt kann man natürlich nicht nur eine Delay-Line dazunehmen, sondern auch mehrere. Ich bin mir nicht so ganz sicher, was nun der Unterschied zwischen Chorus und Ensemble ist, nehme aber an, das beim Ensemble (so wie er z.B. bei Emagic's Logic mitgeliefert wird) kein Feedback im Spiel ist. Da bei Chorus-Effekten auch Feedback im Spiel sein kann, sollte hier die Delay-Zeit auf Werte zwischen 10 und 25 ms eingestellt werden, damit höhere Feedback-Werte nicht zu Resonator-artigen Effekten führen (siehe weiter unten).
+
+<li><strong>Kammfilter/Flanger:</strong>
+Als Kammfilter bezeichnet man einen Effekt der auftritt, wenn das verzögerte Signal nur sehr wenig gegenüber dem Originalsignal verzögert ist. Dadurch treten im Frequenzgang des gemischten Signals Kerben und Peaks auf, die jeweils bei ganzzahligen Vielfachen einer bestimmten Grundfrequenz liegen. Die Delay-Zeiten liegen im Bereich zwishen 0 und 10 ms. Wenn die Delay-Zeit jetzt von einem LFO moduliert wird bewegen sich diese Kerben und Peaks auf der Frequenzachse hin und her - dies bezeichnet man als Flanging. Auch hier kann wieder mit Feedback gearbeitet werden - die Peaks im Frequenzgang treten dann stärker hervor.
+
+<li><strong>Resonator:</strong>
+Dies ist im Prinzip ein Kammfilter mit sehr hohen Feedback-Einstellungen (nahe 100%), jedoch völlig ohne Modulation der Delay-Zeit (der Resonator ist also eigentlich auch kein Modulationseffekt). Das resonierende Kammfilter steht also bei einer bestimmten Frequenz fest. Da die Peaks im Frequenzgang bei ganzzahligen Vielfachen einer Grundfrequenz liegen, entstehen so tonale Effekte, die oft als "metallisch" bezeichnet werden. Wenn jetzt noch in der Feedback-Schleife ein Tiefpass-Filter sitzt, dann klingen die oberen Harmonischen schneller ab. Dies ist auch das Grundprinzip des so genannten "Karplus-Strong" Algorithmus zur Erzeugung von Klängen die denen einer schwingenden Saite ähneln. Man kann also mit Flexi-Modulator einen Teil des Karplus-Strong Synthesizers nachbauen - nämlich den Resonator-Teil. Das Anregungssignal ist in Karplus-Strong basierten Synthesizern oft ein Rauschimpuls, hier ist es das Eingangssignal des PlugIns. Natürlich ist es auch beim Resonator möglich die Modulation zu verwenden, z.B. um dem resultierenden tonalen Klang ein Vibrato zu verpassen. Für tonale Resonator-Effekte ist es empfehlenswert einen sync-Modus zu wählen, in dem die Delay Zeit durch hereinkommende MIDI-Noten bestimmt wird. In diesem Fall nämlich kann man die Resonanzfrequenzen über ein Keyboard spielen bzw. von einem Sequenzer steuern lassen.
+
+<li><strong>Bass Chorus/Bass Flanger:</strong>
+Für Bassisten gibt es spezielle "Tretminen" für Chorus und Flanger die sich von den Versionen für normale Gitarristen unterscheiden indem sie die tieffrequenten Anteile trocken belassen und nur die hochfrequenten Anteile mit Effekt versehen. Dies hat den Hintergrund, dass bei basslastigen Signalen die Mischung zwischen Original- und Effektsignal den tieffrequenten Anteil oft "verwaschen" und "schwammig" erscheinen lässt. Ein solcher spezieller Bass-Modus kann hier nachempfunden werden, indem man "Dry/Wet" auf 50/50 stellt und dann das Effektsignal mit "Wet-HPF" hochpassfiltert und das trockene Signal bei derselben Frequenz mit "Dry-LPF" tiefpassfiltert. Diese Vorgehensweise beschränkt sich natürlich nicht zwangsläufig nur auf Chorus- oder Flanger-Effekt.
+
+<li><strong>Selbstoszillation:</strong>
+Wie weiter oben schon erwähnt kann man die Feedback-Faktoren bis weit in die Selbstoszillation hinein aufdrehen. Ohne Modulation passiert hier nichts weiter interessantes, es wird lediglich eine Schwingung erzeugt, deren Periode der Delay-Zeit entpricht. Wenn jedoch Modulation der Delay-Zeit ins Spiel kommt und dabei auch noch von den verschiedensten Wellenformen Gebrauch gemacht wird, entstehen zum Teil ziemlich abgefahrene rhythmische Muster. Auch interessant ist die Wirkung der Filter in der Rückkopplungsschleife. Wenn zusätzlich zur regelmäßigen Modulation durch die LFO's auch noch der Rauschgenerator benutzt wird, entstehen manchmal Klänge, bei denen man einfach nur lachen muss - viel Spaß.
+
+<li><strong>Frequenzmodulation:</strong>
+Frequenzmodulation ist - wie Karplus-Strong-Resonatoren auch - eine Technik, die eher aus der Synthesizerwelt kommt und bei Effekt-PlugIns normalerweise keine Rolle spielt. Dennoch ist mit dem Flexi-Modulator Frequenzmodulation auch als Effekt möglich. Im Prinzip passiert hier dasselbe, wie beim Vibrato, nur dass die Modulationsfrequenzen hier im hörbaren Bereich liegen. Erreichen kann man dies, indem man einen sync-Mode auswählt, in dem die LFO-Frequenz über MIDI-Noten gesteuert wird. Der LFO ist dann natürlich kein LFO mehr, sondern ein ganz normaler Audio-Oszillator.
+
+<li><strong>FM-Resonator:</strong>
+Wenn sowohl Delay-Zeit als auch LFO-Frequenz durch MIDI-Noten bestimmt werden, kann man sogar frequenzmodulierte (Karplus-Strong)-Resonatoren realisieren. Mal was anderes.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>MIDI-Implementation:</strong>
+<br>
+Weiter oben war schon die Rede davon, dass sich Delay-Zeiten und LFO-Frequenzen auch über MIDI-Noten steuern lassen. Was genau eine bestimmte MIDI-Note bewirkt hängt dabei vom Kanal ab, auf dem sie gesendet wird. Die folgenden Wirkungen der MIDI-Noten greifen natürlich nur dann, wenn bei "sync-Mode" ein entsprechender Modus ausgewählt ist. Die Kanalbelegung ist wie folgt:
+<ul>
+<li><strong>Channel 01:</strong>
+Note-On Events auf Kanal 1 triggern die LFO's neu.
+
+<li><strong>Channel 02:</strong>
+Note-On Events auf Kanal 2 steuern alle Delay-Zeiten und alle LFO-Frequenzen.
+
+<li><strong>Channel 03:</strong>
+Note-On Events auf Kanal 3 steuern alle Delay-Zeiten.
+
+<li><strong>Channel 04:</strong>
+Note-On Events auf Kanal 4 steuern alle LFO-Frequenzen.
+
+<li><strong>Channel 05:</strong>
+Note-On Events auf Kanal 5 steuern die Delay-Zeit von Delayline 1.
+<li><strong>Channel 06:</strong>
+Note-On Events auf Kanal 6 steuern die LFO-Frequenz von Delayline 1.
+
+<li><strong>Channel 07:</strong>
+Note-On Events auf Kanal 7 steuern die Delay-Zeit von Delayline 2.
+<li><strong>Channel 08:</strong>
+Note-On Events auf Kanal 8 steuern die LFO-Frequenz von Delayline 2.
+
+<li><strong>Channel 09:</strong>
+Note-On Events auf Kanal 9 steuern die Delay-Zeit von Delayline 3.
+<li><strong>Channel 10:</strong>
+Note-On Events auf Kanal 10 steuern die LFO-Frequenz von Delayline 3.
+
+<li><strong>Channel 11:</strong>
+Note-On Events auf Kanal 11 steuern die Delay-Zeit von Delayline 4.
+<li><strong>Channel 12:</strong>
+Note-On Events auf Kanal 12 steuern die LFO-Frequenz von Delayline 4.
+
+<li><strong>Channel 13:</strong>
+Note-On Events auf Kanal 13 steuern die Delay-Zeit von Delayline 5.
+<li><strong>Channel 14:</strong>
+Note-On Events auf Kanal 14 steuern die LFO-Frequenz von Delayline 5.
+
+<li><strong>Channel 15:</strong>
+Note-On Events auf Kanal 15 steuern die Delay-Zeit von Delayline 6.
+<li><strong>Channel 16:</strong>
+Note-On Events auf Kanal 16 steuern die LFO-Frequenz von Delayline 6.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Fazit:</strong>
+<br>
+Wie man an der Vielzahl der realisierbaren Effekte sieht, ist Flexi-Modulator tatsächlich flexibel und vereint in einem einzigen PlugIn das, was viele Hersteller in einen ganzen Haufen spezialisierter PlugIns reinpacken - sozusagen ein All-In-One Effekt. Der Preis für diese Flexibilität ist der, dass die Bedienung sicherlich etwas komplizierter ist als z.B. bei einem einfachen Chorus und dass man sich eventuell etwas mehr damit auseinandersetzen muss, wie und warum diese ganzen Effekte eigentlich entstehen. Damit ist das PlugIn wohl eher etwas für Sounddesign-Freaks und weniger etwas für jemanden der einfach auf die Schnelle mal nen "breiteren" Sound braucht
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

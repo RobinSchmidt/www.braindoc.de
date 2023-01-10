@@ -1,0 +1,99 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Envelope-Designer Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Envelope-Designer Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/EnvelopeDesigner392x244.jpg" width=392 height=244 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Envelope-Designer?:</strong>
+<br>
+Envelope-Designer is a plugIn with which you can adjust the relative amount of the attack transients and the sutained/release components in a signal. For the detection of the transient component there are 2 envelope-followers with identical release times and different attack times. The difference between the envelope with the fast attack time and the envelope with the slow attack time yields a control signal, which has significant amplitudes only when the incoming signal is in some "transient" state. This is because the difference between the envelope-followers with fast and slow attack tends to zero in a sustained phase. Multiplying this control signal with the incoming signal yields a signal, which contains the transient component. The extraction of the release component is similar: it is done with two envelope followers with identical attack times a different release times. The difference between the envelope with the slow release time and the envelope with the fast release time has significant amplitudes for decaying signals. Multiplied with the incoming signal, we have extracted the release component. Now we can adjust the relative amplitudes of these two signal components seperately.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Transient Detect Paramters:</strong>
+<br>
+These are the paraemters for the transient detection:
+
+<ul>
+<li><strong>HPF:</strong>
+As transients often contain a large amount of high frequencies, I have included a highpass filter before the two envelope followers which may (or may not, depending on the signal) give rise to a better separation. This is the cutoff frequency of this filter. The highpass does only affect the signal for the detection stage - the actual signal (for the output) is not affected.
+
+<li><strong>Att1:</strong>
+Attack time of the fast envelope follower.
+
+<li><strong>Att2:</strong>
+Attack time of the slow envelope follower.
+
+<li><strong>Rel:</strong>
+Release time (identical in both envelope followers).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Release Detect Paramters:</strong>
+<br>
+These are the paraemters for the detection of the release phase: 
+
+<ul>
+<li><strong>LPF:</strong>
+In analogy to the highpass in the transient detector, there is a lowpass in the release-detector.
+
+<li><strong>Att:</strong>
+Attack time (indentical in both envelope followers).
+
+<li><strong>Rel1:</strong>
+Release time of the fast envelope follower.
+
+<li><strong>Rel2:</strong>
+Release time of the slow envelope follower.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Gain Paramters:</strong>
+<br>
+These are the most importatnt parameters. Here you adjust the relative amount of the transient and the release amplitudes in terms of a gain factor in dB. They correspond to the "Attack" and "Release" parameters in the well known SPL Tansient Designer.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>global Paramters:</strong>
+<br>
+<ul>
+<li><strong>Mode:</strong>
+Here you decide in which way the envelope followers detect the instantaneous amplitude of the incoming signal. There are 6 modes: "mean abs" takes the absolute value of the incoming signal (and smoothes it to get the mean value), "mean sqr" takes the squared input signal (which corresponds to the signal power), and "RMS" (root mean square) also takes the squared input signal and extracts the square root after smoothing. In the other 3 modes it is the same, but the difference is not taken in the linear amplitude domain, but rather in the dB domain (this is the way to think about it, but it is actually implemented as a division in the linear amplitude domain by virtue of log(a/b) = log(a) - log(b) and the dB is a logarithmic measure)
+
+<li><strong>LA:</strong>
+abbreviates Look Ahead. The Envelope-Designer can look into the future, by delaying the signal to be processed while still using the non-delayed signal for the amplitude-detectors. The resulting delay is communicated to the host, so it can compensate for this.
+
+<li><strong>Vol:</strong>
+The global output volume.
+
+<li><strong>Dry/Wet:</strong>
+Actually the Envelope-Designer is - like all dynamics - a typical insert-effect. This means, usually only the wet signal is used. However, to have such a  Dry/Wet control can never be drawback, so I decided to  include this.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

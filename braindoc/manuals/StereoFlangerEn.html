@@ -1,0 +1,109 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Stereo-Flanger Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Stereo-Flanger Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/StereoFlanger344x464.jpg" width=344 height=464 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Stereo-Flanger?:</strong>
+<br>
+Stereo-Flanger is a VST-plugIn for the creation of comb-filter and flanger effects. A comb-filter delays the incoming signal by a certain amount of time and mixes the delayed signal with the original signal. Because of interference between the two signals, there will be peaks and notches in the resulting signal - peaks occur at frequencies, where the original and delayed signal are in phase, notches occur at frequenceis, where the phase bewteen the original and the delayed signal is 180° - at these frequencies, the two signals cancel out each other. The positions of these peaks and notches is determined by the delay-time and they will always have a harmonic relationship - that is: they are all integer multiples of some fundamental frequency. It is also possible to feed back the output of the delayline back to its input - this emphasizes the peaks in the spectrum. When the delaytime is modulated over time (with a LFO, for example), the peaks and notches slide back and forth on the frequncy-axis - this is flanging. Stereo-Flanger provides two LFO-modulated delaylines - one for the left and one for the right channel.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>General parameters:</strong>
+<br>
+<ul>
+<li><strong>Trig:</strong>
+This button re-triggers the LFO's (resets them to their start-phase). This can be also done via MIDI note-on events on MIDI cahnnel 01.
+
+<li><strong>Lin/Exp:</strong>
+Here you choose, in which way the delaytime is to be modulated. But it is more convenient here to consider the reciprocal of the delaytime instead of delaytime itself because this is the fundamental frequency of our comb-filter/resonator. In the linear mode, this fundamental frequency is modulated up and down by the same frequency difference and in the exponential mode, it is modulated up and down by the same musical interval.
+
+<li><strong>Note:</strong>
+This determines the average delaytime of the delayline - but again, the delaytime is not expressed as a raw time value but as the note value which corresponds to the reciprocal of the delaytime. From this note value, the fundamental frequency of the comb is calculated, the reciprocal of which is the delaytime. This controller is also playable via MIDI-notes (on channel 02 - channel 01 is used for LFO-triggering) - furthermore, the delaytime responds to pitchbend events (again on channel 02).
+
+<li><strong>CFB</strong>
+These are the crossfedback controllers. They control, how much of the output signal one delayline is fed back to the input of the other delayline.
+
+<li><strong>D/W:</strong>
+Mixing ratio between original- and effect-signal (Dry/Wet).
+
+<li><strong>Vol:</strong>
+The global output volume.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameters for left and right channel:</strong>
+<br>
+
+<ul>
+<li><strong>Tune:</strong>
+This is a (coarse) detuning of the delayline with respect to the note value which is set up with the "Note" control (in semitones).
+
+<li><strong>Fine:</strong>
+This is an additional fine detuning (in cents).
+
+<li><strong>Vol:</strong>
+Output volume of the delayline.
+
+<li><strong>Pan:</strong>
+Panorama position of the output of the delayline.
+
+<li><strong>FB:</strong>
+This is the amount of feedback. It is adjusted in percent and the range goes from -150% to +150% - however, if the absolute value is greater than 100% the whole sytem becomes unstable, that is: it goes into self-oscillation. Therefore, with extreme settings, the Stero-Flanger mutates from an effect to a sound-generator.
+
+<li><strong>HP und LP:</strong>
+These are the cutoff-frequencies of a highpass- and a lowpass-filter which are inside the feedback-loop. It should be mentioned, that FB, HP and LP share the same display - it always shows the most recently adjusted parameter.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>LFO-parameters:</strong>
+<br>
+Directly next to the text "LFO" you choose the waveform of the LFO. The other parameters are:
+
+<ul>
+<li><strong>Amt:</strong>
+abbreviates amount. Here you can adjust the depth of the LFO-modulation. The unit is given in octaves. In the exponential LFO-mode, the filter-frequency is modulated this interval up and down, in the linear LFO-mode, the frequency is modulated this interval down and the same frequency difference up.
+
+<li><strong>Spd:</strong>
+Speed. This adjusts the time which the LFO needs for a complete cycle in terms of a note length.
+
+<li><strong>Phs:</strong>
+Here you control the start-phase of the LFO (the point within the waveform to which the LFO is set when it is re-triggered).
+
+<li><strong>Att:</strong>
+To smooth out discontinueities which are part of some waveforms, there is a slew-rate limiter in chain to the LFO. Here you adjust the attack-time of this slew-rate limiter - that is a minimum time for upward-jumps.
+
+<li><strong>Rel:</strong>
+Release time of the slew-rate limiter, that is a minimum time for downward-jumps.
+
+<li><strong>HPF:</strong>
+Also included is a highpass-filter which also shapes the waveform. The cutoff frequency is adjusted here.
+
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

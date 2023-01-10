@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Stereo-Enhancer Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Stereo-Enhancer Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/StereoEnhancer280x372.jpg" width=280 height=372 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Stereo-Enhancer?:</strong>
+<br>
+Stereo-Enhancer is a VST-plugIn for the PC-platform for the modification of the stereo-width of a signal. The adjustment can be made for low, mid and high frequencies seperately. The separation of the frequency-bands is achieved by means of linear-phase FIR-filters. This is, because the sum of the three filtered (not yet modified) signals should sum up exactly to the original signal. From the use of FIR-technology results a quite high CPU-usage, because convolutions have to be implemented - sorry for that. The adjustment of the stereo image itself is based on amplifying/attenuating the difference of the respective channel with the mono-sum. This also implies, that the plugIn can't be used to create pseudo-stereo signals from mono-signals, as this difference is exactly zero in this case. It's just a Stereo-Enhancer, not a Stereo-Creator.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>general Parameters:</strong>
+<br>
+On the right side of the plugin window you find the general parameters, these are:
+<ul>
+<li><strong>Mono:</strong>
+This switch mixes the final output signal to a mono-signal, to quickly check out the mono-compatibility of the resulting output signal.
+
+<li><strong>Dry/Wet:</strong>
+crossfades between original signal and effect signal
+
+<li><strong>Vol:</strong>
+the global output volume
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameters for the different frequency-bands:</strong>
+<br>
+As already mentioned, prior to the actual stereo-width regulation the signal is splitted into three frequency bands. The crossover frequencies are controlled via the <strong>CrsFrq</strong>-Knobs. For each frequency band, there are the following parameters:
+
+
+<ul>
+<li><strong>Width:</strong>
+This is the knob for the actual stereo-width - it controls, by which amount the mono-sum-signal and the respective difference-to-the-mono-sum-signal goes to the left and right output channel. A setting of 0% will only put the mono-sum to the left and right channel, with a setting of 50% both signals will go to the channel with equal amounts (and thereby reconstruct the original signal), and with a setting of 100% only the respective difference-signal goes to the channel.
+
+<li><strong>Gain:</strong>
+As difference-signals are very small in signals with a weak stereo-width, and on the other hand the mono-sum is quite large here, the need for a gain control may arise.
+
+<li><strong>Mute:</strong>
+Sometimes one may want to listen to the different frequency bands seperately. That's why each band can be muted.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

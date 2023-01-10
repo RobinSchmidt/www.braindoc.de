@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Pitch-Shifter Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Pitch-Shifter Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/PitchShifter248x220.jpg" width=248 height=220 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Pitch-Shifter?:</strong>
+<br>
+Pitch-Shifter ist ein VST-PlugIn für die PC-Plattform zur Verschiebung der Tonhöhe des Eingangssignals. Normalerweise sind Tonhöhe und Länge des Audiomaterials aneinander gekoppelt - wenn man z.B. einfach etwas schneller abspielt, ist es insgesamt kürzer und die Tonhöhe geht nach oben. Beim Pitch-Shifter kommt eine Art delayline-basierter Granular-Synthese-Algorithmus zum Einsatz, der die Tonhöhe verändert ohne dabei die Gesamtlänge des Audiomaterials zu beeinflussen (was bei einem Echtzeit PlugIn natürlich sowieso nicht sinnvoll möglich wäre). Dabei wird das Eingangssignal in viele kleine Abschnitte - so genannte Grains - unterteilt, und diese werden dann schneller oder langsamer abgespielt, wobei beim hochshiften das Grain geloopt wird, während beim runtershiften das Grain nicht bis zum Ende gespielt wird. Es werden jeweils zwei solche Grains gleichzeitig abgespielt, wobei zwischen diesen beiden Grains hin- und her- gefadet wird.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Technische Parameter:</strong>
+<br>
+Auf der linken Seite des PlugIns in einem extra abgeteilten Kästchen befinden sich die so genannten "technischen" Parameter des PlugIns, die zwar teilweise auch Einfluss auf den Klang haben, jedoch nicht in dem Sinne "musikalische" Parameter sind, da deren Einfluss auf den Klang in den Unzulänglichkeiten des verwendeten Verfahrens begründet ist:
+
+<ul>
+<li><strong>Window:</strong>
+Es werden - wie gesagt - immer zwei Grains gleichzeitig abgespielt, wobei die Lautstärke jedes einzelnen Grains davon abhängt, wie weit sich der jeweilige tapOut (Ausgang) der Delayline "hinter" dem tapIn (Eingang) befindet. Da die Summe beider Output-Amplituden immer gleich 1 sein soll und die beiden Grains sich zur Hälfte überlappen, bieten sich als fade-in und fade-out Funktion ein Dreiecks- und eine cos^2 Funktion an. Naja zugegeben, das ist wohl eher was für Signalverarbeitungsfreaks, ich selbst höre auch kaum einen Unterschied zwischen beiden Varianten.
+
+<li><strong>GrainSize:</strong>
+Dieser Parameter bestimmt die Länge der Signalabschnitte. Die Einheit ist Millisekunden. Wenn beim Pitch-Shifting Artefakte hörbar werden, kann eine Veränderung der Grainsize helfen diese zu minimeren bzw. klanglich zu beeinflussen.
+
+<li><strong>MonoIn:</strong>
+Wenn dieser Schalter gedrückt ist, wird nur der linke Eingangskanal bearbeitet und das so gewonnene Signal in den rechten Ausgangskanal kopiert. So kann man bei Mono-Eingangssignalen Rechenleistung sparen.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Musikalische Parameter:</strong>
+
+<ul>
+<li><strong>Coarse:</strong>
+Hier wird die Tonhöhenverschiebung des Ausgangssignals grob eingestellt. Die Einheit sind Halbtöne.
+
+<li><strong>Fine:</strong>
+Feinstimmung für die Tonhöhenverschiebung.
+
+<li><strong>FB:</strong>
+Das Ausgangssignal ergibt sich immer als Summe der beiden (mit der Fensterfunktion multiplizierten) "tapOuts". Ein Pitch-Shifter der so arbeitet, kann natürlich auch sein Ausgangssignal auf den Eingang (den "tapIn") zurückkoppeln. Genau das passiert mit dem "FB"-Parameter. FB steht naheliegenderweise für Feedback. Da das Ausgangssignal ein pitch-geshiftete Version des Eingangssignals ist, entstehen so weitere, noch stärker geshiftete Versionen.
+
+<li><strong>Dry/Wet:</strong>
+Überblendregler zwischen Eingangssignal und Effektsignal.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

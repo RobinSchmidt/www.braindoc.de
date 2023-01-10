@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Stereo-Enhancer Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Stereo-Enhancer Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/StereoEnhancer280x372.jpg" width=280 height=372 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Stereo-Enhancer?:</strong>
+<br>
+Stereo-Enhancer ist ein VST-PlugIn für die PC-Plattform zur Modifizierung der Stereo-Basisbreite eines Signals. Die Basisbreitenänderung kann für tiefe, mittlere und hohe Frequenzen getrennt eingestellt werden. Für die Trennung der verschiedenen Frequenzbereiche kommen linearphasige FIR-Filter zum Einsatz, unter Anderem, um zu gewährleisten, dass die Summe der (noch nicht bearbeiteten) gefilterten Signale wieder exakt das Originalsignal rekonstruiert. Aus der Verwendung der FIR-Technologie resultiert eine relativ hohe CPU-Belastung, da hier eine Faltung implementiert werden muss - sorry dafür. Die Basisbreitenregelung selber basiert auf der Verstärkung/Absenkung von Differenzen der beiden Kanäle gegenüber der Mono-Summe (also der Summe aus linkem und rechtem Kanal). Dies bedeutet auch, dass das PlugIn nicht zur Erzeugung von Pseudo-Stereo Signalen aus Mono-Signalen verwendet werden kann, da diese Differenz bei Mono-Signalen Null ist. Es ist eben ein Stereo-Enhancer und kein Stereo-Creator.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>allgemeine Parameter:</strong>
+<br>
+Auf der rechten Seite des PlugIn-Fensters befinden sich die allgemeinen Parameter des PlugIns, die da wären:
+<ul>
+<li><strong>Mono:</strong>
+Dieser Schalter mischt das finale Ausgangssignal zu einem Monosignal zusammen, damit man mal schnell die Monokompatibilität überprüfen kann.
+
+<li><strong>Dry/Wet:</strong>
+Crossfader zwischen Original- und bearbeitetem Signal.
+
+<li><strong>Vol:</strong>
+die globale Ausgangslautstärke.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter für die einzelnen Frequenzbänder:</strong>
+<br>
+Das Signal wird - wie gesagt - vor der Basisbreitenregelung in drei Frequenzbereiche aufgeteilt. Die Übergangsfrequenzen werden mit den beiden <strong>CrsFrq</strong>-Reglern eingestellt. Pro Frequenzband gibt es dann die folgenden Parameter:
+
+<ul>
+<li><strong>Width:</strong>
+Dies ist der Regler für die eigentliche Stereobasisbreite - der Regel bestimmt darüber, zu welchen Anteilen das Monosummen-signal und das jeweilige Differenz-zur-Monosumme-Signal auf linken und rechten Kanal geht. Bei einer Einstellung von 0% geht nur die Monosumme auf linken und rechten Kanal, bei 50% gehen beide zu gleichen Anteilen auf den Kanal (und rekonstruieren damit das jeweilige Originalsignal), bei 100% geht nur das jeweilige Differenzsignal auf den Kanal.
+
+<li><strong>Gain:</strong>
+Da die Differenzsignale bei Eingangssignalen mit einer sehr geringen Stereobasisbreite sehr klein sind und umgekehrt die Monosumme hier sehr groß ist (maximal 6 dB lauter als beide Kanäle einzeln), ergibt sich die Notwendigkeit, die Ausgangslautstärke anpassen zu können. Dafür sind die Gain-Regler da.
+
+<li><strong>Mute:</strong>
+Gelegentlich möchte man ein Frequenzbereich mal solo hören. Daher kann hier jeder Frequenzbereich individuell stummgeschaltet werden.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

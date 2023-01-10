@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Auto-Pan Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Auto-Pan Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/AutoPan264x152.jpg" width=264 height=152 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Auto-Pan?:</strong>
+<br>
+Auto-Pan is a VST-plugIn for the automatic adjustment of the panorama position of the signal (where "automatic" means LFO-controlled in this case). The LFO is tempo-synchronized and can be triggered either via the graphical user inface or via note-on events.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameters:</strong>
+<ul>
+<li><strong>Amt:</strong>
+abbreviates amount. This controls, the maximum deviation of the output signal from the center of the stereo field (the maximum deviation is reached when the oscillator passes through its positive or negative maximum value). Of course, this does not include the deviation from the center which might be already present in the input signal.
+
+<li><strong>Spd:</strong>
+abbreviates "speed". This is the time, the oscialltor needs for a complete cycle in terms of a note-length.
+
+<li><strong>Phs:</strong>
+The start-phase of the oscillator. This is the position to which the oscillator is set, when it is re-triggered.
+
+<li><strong>LPF:</strong>
+There is a lowpass-filter following the LFO to smooth out discontinueities in the waveform. Here you adjust the cutoff-frequency of this lowpass-filter (in Hz).
+
+<li><strong>HPF:</strong>
+There is also a highpass-filter, the cutoff of which is controlled here.
+
+<li><strong>Wave:</strong>
+Here you choose the basic waveform of the oscillator.
+
+<li><strong>Lin:</strong>
+This switch switches to a linear panning mode - in this mode the amplitude of the right channel "R" is simply calculated as: R = 1 - L, where L is the amplitude of the left channel. In the default position (switch turned off), there will be a calculation which ensures always the same output power ("Constant Power Pan")
+
+<li><strong>Trig:</strong>
+This button re-triggers the LFO. As already mentionend, this can be done by MIDI note-on events, too.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

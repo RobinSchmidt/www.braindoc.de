@@ -1,0 +1,117 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Stereo-Phaser Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Stereo-Phaser Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/StereoPhaser432x388.jpg" width=432 height=388 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Stereo-Phaser?:</strong>
+<br>
+Stereo-Phaser ist ein VST-PlugIn zur Erzeugung von Phasing-Effekten. Dieser Effekt entsteht dadurch, dass man das Signal durch eine Kette von Allpass-Filtern schickt, und dieses gefilterte Signal mit dem Originalsignal mischt. Ein Allpass-Filter lässt alle Frequenzen mit unveränderter Amplitude "passieren", verursacht jedoch eine frequenzabhängige Phasenverschiebung. Wenn man das Filterausgangssignal mit dem Originalsignal mischt, entstehen so Peaks und Kerben im Frequenzgang (im Gegensatz zum Flanger sind diese jedoch nicht äquidistant auf der Frequenzachse verteilt und haben somit keine harmonische Struktur). Wenn man jetzt die charakteristischen Frequenzen dieser Allpass-Filter zeitlich moduliert, wandern die Peaks und Kerben auf der Frequenzachse hin und her - das ergibt dann den Phaser Effekt. Stereo-Phaser besitzt zwei solcher Allpass-Ketten (jeweils eine für linken und rechten Kanal) die jeweils durch einen temposynchronen LFO moduliert werden.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>allgemeine Parameter:</strong>
+<br>
+<ul>
+<li><strong>FiltMode:</strong>
+Hier wählt man die Art der Filter aus. Neben Allpass erster und zweiter Ordnung (für klassisches Phasing) stehen auch noch ein Notch-Filter und zwei Bandpass-Varianten zur Verfügung. Diese erweitern das Klangpotenzial des Stereo-Phasers um einige zusätzliche Varianten.
+
+<li><strong>LFOMode:</strong>
+Die Modulation der Filterfrequenzen kann sowohl linear als auch exponentiell erfolgen. Im linearen Modus wird die Filterfrequenz um genau den gleichen Betrag nach oben und unten moduliert, im exponentiellen Modus dagegen werden die Filterfrequenzen um das gleiche musikalische Intervall nach oben und unten moduliert.
+
+<li><strong>Stages:</strong>
+Dies ist die Anzahl der Filter-Stufen in der Kette.
+
+<li><strong>Trig:</strong>
+Midt diesem Button werden die LFO's neu getriggert (d.h. auf ihre Startphase zurückgesetzt).
+
+<li><strong>Dry/Wet:</strong>
+Mischungsverhältnis zwischen Original- und Effektsignal.
+
+<li><strong>Vol:</strong>
+Die globale Ausgangslautstärke.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Feedback-Parameter:</strong>
+<br>
+Es existiert eine Feedbackschleife um die Allpass-Kette herum. Das heißt, das Ausgangssignal der Allpass-Kette kann auf den Eingang der Allpass-Kette rückgekoppelt werden. Es stehen folgende Parameter zur Verfügung:
+
+<ul>
+<li><strong>FB:</strong>
+Das ist die Stärke der Rückkopplung. Die Einstellung erfolgt in Prozent. Der Regelbereich geht von -150 bis +150 Prozent - bei Beträgen größer als 100 wird das ganze System allerdings im allgemeinen instabil, d.h. es fängt an zu oszillieren. Dies ist dann vielleicht eher zur Erzeugung von ungewöhnlichen Klängen interessant.
+
+<li><strong>HP und LP:</strong>
+Hier stellt man die Cutoff-Frequenzen eines in der Rückkopplungsschleife befindlichen Hochpass-Tiefpass Filterpaares ein. Zu beachten ist, dass sich der FB-Regler und die beiden Filter-Regler das Display teilen - hier wird immer der zuletzt veränderte Parameter angezeigt.
+
+<li><strong>CFB:</strong>
+Die beiden CFB-Regler regeln das Crossfeedback zwischen den beiden Allpass-Ketten. Der obere regelt, wie stark das Ausgangssignal der linken Allpass-Kette auf den Eingang der rechten Allpass-Kette kreuz-rückgekoppelt wird, beim unteren Regler ist es genau umgekehrt.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter für linken und rechten Kanal:</strong>
+<br>
+
+<ul>
+<li><strong>Frq:</strong>
+Hier wird die charakteristische Frequenz der Allpass-Filter eingestellt (bzw. die Mittenfrequenz im Falle von Notch- und Bandpass-Filtern). Diese wird natürlich noch vom LFO moduliert.
+
+<li><strong>Q:</strong>
+Der so genannte Quality-Factor der einzelnen Filter-Einheiten. Dieser Parameter ist Falle des 1-pole Allpass-Filters allerdings wirkungslos.
+
+<li><strong>Phs:</strong>
+Dies ist eine Phasenumschaltung für das Filterausgangssignal (die vor der Rückkopplung greift).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>LFO-Parameter:</strong>
+<br>
+Direkt nebem dem Schriftzug "LFO" wird die Wellenform ausgewählt. Ansonsten gibt es folgende Parameter:
+
+<ul>
+<li><strong>Amt:</strong>
+steht für Amount. Hier wird also die Tiefe der LFO-Modulation eingestellt. Die Einheit ist in Oktaven angegeben. Hierbei ist allerdings zu beachten, das im linearen LFO-Modus die Filter-Frequenz zwar um die eingestellte Anzahl von Oktaven heruntermoduliert wird, beim Hochmodulieren jedoch um genau die gleiche Frequenz-Differenz nach oben moduliert wird.
+
+<li><strong>Spd:</strong>
+steht für Speed - hier stellt man also die Geschwindigkeit des LFO's ein. Die Einstellung erfolgt als Notenlänge.
+
+<li><strong>Phs:</strong>
+Dies ist die Startphase des Oszillators, also derjenige Punkt innerhalb der Oszillatorwellenform, zu der der Oszillator zurückgestzt wird, wenn er neu getriggert wird.
+
+<li><strong>Att:</strong>
+Attack-Zeit eines Slew-Rate Limiters, der bei Oszillatorwellenformen mit harten Sprüngen die Anstiegszeit begrenzt - also eine Mindestzeit für Sprünge nach oben.
+
+<li><strong>Rel:</strong>
+Release-Zeit des Slew-Rate Limiters. Dies ist die Mindestzeit für Sprünge nach unten.
+
+<li><strong>HPF:</strong>
+Ebenfalls ist ein Hochpassfilter dem LFO nachgeschaltet um die Wellenform weiter zu formen. Dessen Cutoff-Frequenz wird hier eingestellt.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

@@ -1,0 +1,180 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Braindoc's VST-PlugIns</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">			
+</head>
+
+<body>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="../grafik/vst155x32.gif" width=155 height=32 ALT="VST-PlugIns">
+  </TD>
+ </TR>
+</TABLE>
+
+<p align=left>
+As already mentioned on the start-page, I develop VST-PlugIns. VST is an abbreviation of
+Virtual Studio Technology. This is an open standard for different kinds of audio plugIns.
+The VST-standard was created by the audiosofware-company Steinberg
+(<a href="http://www.steinberg.de" target="_blank">www.steinberg.de</a>) and provides an 
+interface for programming audio-effects and software-instruments in an easy way (thanks Steinberg!)
+Many of my plugIn-creations are downloadable as freeware here on this page. I always appreciate 
+feedback such as suggestions for improvements, new ideas and bug-reports. All of the plugIns
+published here are done to the best of my knowledge and in all conscience and have been tested. 
+However, it is never possible to be sure that everything is 100 percent bug-free. For this reason 
+I cannot assume responsibility for any damages that may occur on your system because of the use 
+of these plugIns. At the moment, my plugIns are only available for the PC-platform, because I
+don't have a Mac to compile Mac-versions. The plugIns come in the form of .zip-archives which
+include a .dll file and some also include some presets in the .fxp format. Simply download the .zip, unzip and copy or move the .dll file into the VST-plugIn folder. The user manuals are provided here on this page as .html files.
+</p>
+
+<p>
+ <A HREF="../vst/Aggressor.zip"><b>Aggressor</b></A>
+ <br>
+Aggressor is a monophonic synthesizer, which can be used as a VST instrument. The synth was specifically designed to produce aggressive bass- and lead-sounds where special attention was paid on the ability to authentically emulate the typical sound of the famous TB-303. The architecture is based on the classic VCO-VCF-VCA structure where each of the building blocks goes far beyond the typical implementation of bassline synths.  <a href="../manuals/AggressorEn.html" target="_self">read the manual...</a>  
+
+<!-- <p>
+Aggressor is still in development will be released as commercial VSTi (hopefully soon). However, even the free demo version will provide more features than most other bass/lead synths do.  -->
+
+<p>
+I started a thread at kvraudio about this synth: here it is:
+
+<a href="http://www.kvraudio.com/forum/viewtopic.php?t=119977" target="blank">http://www.kvraudio.com/forum/viewtopic.php?t=119977</a>
+
+i, hope to get some feedback from there...
+
+
+</p>
+
+<p>
+ <A HREF="../vst/ChannelTool.zip"><b>Channel-Tool</b></A>
+ <br>
+ Channel-Tool is a quite simple plugIn with which you can adjust the gain, the stereo-mix and the
+ phase of the input signal. Actually I did program this plugIn mainly for myself as a template
+ or skeleton plugIn - which means a plugIn I use as a starting point for the development of
+ other plugIns. Nevertheless, in practice it is sometimes quite useful. Because of its simplicity
+ I did not include a manual.
+</p>
+
+<p>
+ <A HREF="../vst/StereoDelay.zip"><b>Stereo-Delay</b></A>
+ <br>
+ Stereo-Delay is a plugIn for the creation of delay- and echo-effects. It provides two independent
+ delay-lines for the left and the right channel. The delaylines have a feedback-loop with 
+ highpass- and lowpass-filter and can also interact via crossfeedback. The delay-times are not
+ specified in seconds or milliseconds, but musically as a note-value.
+ <a href="../manuals/StereoDelayEn.html" target="_self">read the manual...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/PitchShifter_v1.0.0.zip"><b>Pitch-Shifter</b></A> (version 1.0.0)
+ <br>
+ Pitch-Shifter is a plugIn for shifting the pitch of the input signal without affecting the
+ overall length. Normally pitch and length of audio material are coupled - if you simply 
+ icrease the playback-tempo, the pitch raises and the length shortens. Pitch-Shifter uses
+ a delayline-based granular algorithm to decouple the pitch from the length, so that the overall
+ length of the signal will not be affected (which would not make much sense in a realtime-plugIn anyway)
+ <a href="../manuals/PitchShifterEn.html" target="_self">read the manual...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/ShifterBank_v1.0.0.zip"><b>Shifter-Bank</b></A> (version 1.0.0)
+ <br>
+ Shifter-Bank is a plugIn for the creation of several pitch-shifted versions of the input signal.
+ With low shift-factors (in the range between a few cents and a semitone) you will get effects
+ which are called "unison" in some synthsizers (indeed was it a discussion about unison in the forum
+ on <a href="http://www.kvraudio.com" target=blank>www.kvraudio.com</a>, which motivated this 
+ plugIn). The plugIn can therefore be used to create a "fatter" sound. With higher amounts of
+ pitch-shifting, the effects remind me on effects used on TV to garble voices of persons who
+ want to stay anonymous. This plugIn - the same as the Pitch-Shifter - works with a delayline-based
+ granulation algorithm.
+ <a href="../manuals/ShifterBankEn.html" target="_self">read the manual...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/LPCVocoder_v1.0.0.zip"><b>LPC-Vocoder</b></A> (version 1.0.0)
+ <br>
+ LPC-Vocoder is a plugIn for the creation of vocoder-sounds. These are created by superimposing
+ the frequency-envelope of one signal (the so called analysis- or modulatorsignal) on a second
+ signal (the so called synthesis- or carriersignal). In the classic vocoder this is achieved
+ by means of an analysis- and a synthesis-filterbank - the LPC-Vocoder in contrast uses a single
+ adaptive filter which is capable of realizing complex frequency-responses with many peaks.
+ LPC is an abbriviation of Linear Predictive Coding - a technique in signal processing which
+ can extract the formants (frequency bands with high amplitude) out of an audio signal. LPC is
+ widely used in the speech signal processing community, for example to compress the speech
+ for transmission in digital communication systems.
+ <a href="../manuals/LPCVocoderEn.html" target="_self">read the manual...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/Compressor_v1.0.1.zip"><b>Compressor</b></A> (version 1.0.1)
+ <br>
+ Compressor is a plugIn for the reduction of the dynamics of an input signal. Compressors achieve
+ this goal by analyzing the amplitude envelope of the incoming signal and reducing the gain when the
+ signal exceeds a certain threshold. This reduces the amplitude of the peaks in the audio signal.
+ Now the signal can be amplified further without clipping/distortion. So at the end of the day we
+ have a signal in which the loud parts stay as they are and the quiet parts are amplified. This 
+ increases the overall loudness of the signal.
+ <a href="../manuals/CompressorEn.html" target="_self">read the manual...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/TranceGate_v1.0.0.zip"><b>Trance-Gate</b></A> (version 1.0.0)
+ <br>
+ Trance-Gate is a plugIn for the creation of gate effects. The opening and closing of the gate is
+ triggered by incoming MIDI-notes - note on events trigger the opening phase, note-off events trigger
+ the closing phase. As opposed to gates with a built in step sequencer this has two advantages: first,
+ it gives the user more flexibility in the rhythmic opening and closing because the user can take full
+ advantage of all MIDI functions which the chosen sequencer software provides (different note-lengths
+ for each step, changing rythms, etc.). And second: the plugIn is small and does not take much space
+ on the monitor. ...and it did not take much time to implement it :-).
+ <a href="../manuals/TranceGateEn.html" target="_self">read the manual...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/AutoPan_v1.0.0.zip"><b>Auto-Pan</b></A> (version 1.0.0)
+ <br>
+Auto-Pan is a VST-plugIn for the automatic adjustment of the panorama position of the signal (where "automatic" means LFO-controlled in this case). The LFO is tempo-synchronized and can be triggered either via the graphical user inface or via note-on events.
+ <a href="../manuals/AutoPanEn.html" target="_self">read the manual...</a> 
+</p>
+
+<p>
+<A HREF="../vst/EnvelopeDesigner_v1.0.1.zip"><b>Envelope-Designer</b></A> (Version 1.0.1)
+<br>
+Envelope-Designer is a plugIn with which you can adjust the realtive amount of the attack transients and the sutained/release components in a signal.
+ <a href="../manuals/EnvelopeDesignerEn.html" target="_self">read the manual...</a> 
+</p>
+
+<p>
+<A HREF="../vst/StereoEnhancer_v1.0.0.zip"><b>Stereo-Enhancer</b></A> (version 1.0.0)
+<br>
+Stereo-Enhancer is a VST-plugIn for the PC-platform for the modification of stereo-width of a signal. The adjustment can be made for low, mid and high frequencies seperately. The separation of the frequency-bands is achieved by means of linear-phase FIR-filters. This is, because the sum of the three filtered (not yet modified) signals should sum up exactly to the original signal. 
+ <a href="../manuals/StereoEnhancerEn.html" target="_self">read the manual...</a> 
+</p>
+
+<p>
+<A HREF="../vst/PsychoPhaser_v1.0.0.zip"><b>Psycho-Phaser</b></A> (version 1.0.0)
+<br>
+Psycho-Phaser is a VST-plugIn for phasing effects. This effect arises, when sending the input signal through a chain of allpass-filters and mixing that filtered signal with the original signal. An allpass-filters lets all frqeuencies pass without any attenuation or amplification, but introduces a frequency-dependent phase-shift. When the filtered signal is mixed with the original signal, there will be notches in the frequency-content of the resulting signal at all frequencies at which the phase-shift in the filtered signal is some odd integer multiple of 180 degrees. In contrast to a flanger, these notches are not distributed at integer multiples of some fundamental frequency along the frequency axis - so they have no harmonic relationship. This is the most distinguishing feature between phasers and flangers (which are often regarded as somehow similar). If the characteristic frequencies of the allpass-filters are modulated over time (via an LFO), these notches slide back and forth on the frequency axis - this is phasing. Psycho-Phaser provides two independent allpass-chains for left and right channel, each of which with its own, tempo-synchronized LFO.
+ <a href="../manuals/PsychoPhaserEn.html" target="_self">read the manual...</a> 
+</p>
+
+
+<p>
+<A HREF="../vst/StereoFlanger_v1.0.1.zip"><b>Stereo-Flanger</b></A> (version 1.0.1)
+<br>
+Stereo-Flanger is a VST-plugIn for the creation of comb-filter and flanger effects. A comb-filter delays the incoming signal by a certain amount of time and mixes the delayed signal with the original signal. Because of interference between the two signals, there will be peaks and notches in the resulting signal - peaks occur at frequencies, where the original and delayed signal are in phase, notches occur at frequenceis, where the phase bewteen the original and the delayed signal is 180° - at these frequencies, the two signals cancel out each other. The positions of these peaks and notches is determined by the delay-time and they will always have a harmonic relationship - that is: they are all integer multiples of some fundamental frequency. It is also possible to feed back the output of the delayline back to its input - this emphasizes the peaks in the spectrum. When the delaytime is modulated over time (with a LFO, for example), the peaks and notches slide back and forth on the frequncy-axis - this is flanging. Stereo-Flanger provides two LFO-modulated delaylines - one for the left and one for the right channel.
+ <a href="../manuals/StereoFlangerEn.html" target="_self">read the manual...</a> 
+</p>
+
+
+
+
+
+
+</body>
+</html>

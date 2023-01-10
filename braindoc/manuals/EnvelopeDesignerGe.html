@@ -1,0 +1,107 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Envelope-Designer Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Envelope-Designer Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/EnvelopeDesigner392x244.jpg" width=392 height=244 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Envelope-Designer?:</strong>
+<br>
+Envelope-Designer ist ein VST-PlugIn für die PC-Plattform mit dem man das Verhältnis zwischen Transienten und gehaltenen bzw. abklingenden Phasen des Eingangssignals einstellen kann. Zur Detektion der transienten Anteile werden dabei zwei Envelope-Follower mit gleicher Release-Zeit jedoch verschiedenen Attack-Zeiten benutzt. Die Differenz zwischen dem Envelope-Follower mit der schnelleren Attack-Zeit und dem mir der längeren Attack-Zeit ergibt ein Steuersignal mit dem das Eingangssignal multipliziert wird. Das so gewonnene Signal enthält nur noch die transienten Anteile des Eingangssignals, da die Differenz zwischen schnellem und langsamem Hüllkurvenverfolger bei eingeschwungenen Signalen verschwindet. Die Detektion der gehaltenen bzw. abklingenden Signalanteil funktioniert ähnlich: Hier sind zwei Hüllkurvenverfolger mit identischer (sehr kurzer) Attack-Zeit aber verschiedenen Release Zeiten im Einsatz. Die Differenz zwischen dem Hüllkurvenverfolger mit langer Release-Zeit und dem mit kurzer Release-Zeit ergibt ein Steuersignal, welches große Amplituden hat, wenn das Eingangssignal sich in einem Abklingvorgang befindet. Multipliziert man dieses Steursignal mit dem Eingangssignal hat man die Abklingphase des Eingangssignals extrahiert. Jetzt kann man diese beiden Anteile unabhängig voneinander in ihrer Lautstärke regeln. Der Envelope-Designer bietet folgende Parameter:
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Transient Detect Paramter:</strong>
+<br>
+Hier werden die Parameter für den Transienten-Detektor eingestellt:
+
+<ul>
+<li><strong>HPF:</strong>
+Da Transienten oft eher im hochfrequenten Bereich angesiedelt sind, kann man dass Signal vor dem Hüllkurvenverfolger mit einem Hochpassfilter filtern um eventuell eine bessere Abtrennung zu erhalten. Das eigentliche Eingangssignal wird dabei nicht angetastet - das Filter wirkt nur auf das Eingangssignal der Detektorschaltung.
+
+<li><strong>Att1:</strong>
+Attack-Zeit für den schnellen Hüllkurvenverfolger.
+
+<li><strong>Att2:</strong>
+Attack-Zeit für den langsamen Hüllkurvenverfolger.
+
+<li><strong>Rel:</strong>
+Release-Zeit (identisch in beiden Hüllkurvenverfolgern).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Release Detect Paramter:</strong>
+<br>
+Hier werden die Parameter für den Detektor für gehaltene/abklingende Phasen eingestellt:
+
+<ul>
+<li><strong>LPF:</strong>
+Analog zum Hochpassfilter in der Transient-Detektor Schaltung gibt es ein Tiefpass in der Release-Detektor Schaltung.
+
+<li><strong>Att:</strong>
+Attack-Zeit (identisch in beiden Hüllkurvenverfolgern).
+
+<li><strong>Rel1:</strong>
+Release-Zeit für den schnellen Hüllkurvenverfolger.
+
+<li><strong>Rel2:</strong>
+Release-Zeit für den langsamen Hüllkurvenverfolger.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Gain Paramter:</strong>
+<br>
+Dies sind wohl die wichtigsten Parameter. Hier werden die Verstärkung bzw. Absenkung für den transienten bzw. gehaltenen/abklingenden Signalanteil eingestellt. Wer den SPL Transient Designer kennt: die Gain-Regler entsprechen den Attack/Sustain Reglern im Transient-Designer.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>globale Paramter:</strong>
+<br>
+<ul>
+<li><strong>Mode:</strong>
+Hier kann man einstellen, auf welche Weise die Hüllkurve des Signals extrahiert werden soll. Es gibt 6 verschiedene Modi: "mean abs" berechnet die Hüllkurve als gemittelten Absolutwert des Signals (also aus dem  gleichgerichteten Signal). "mean sqr" dagegen nimmt das quadrierte Signal - dieses entspricht der momentanen Signalleistung. "RMS" (root mean square) nimmt auch das quadrierte Signal, zieht aber nach dem eigentlichen Hüllkurvenverfolger wieder die Wurzel. Bei den anderen 3 Modi ist es genauso, nur dass hier die Differenzbildung nicht direkt auf den Hüllkurven gemacht wird, sondern stattdessen auf den in dB umgerechneten Hüllkurven (so kann man es sich vorstellen, realisiert ist es in der Praxis durch eine Division der beiden Hüllkurven, denn log(a/b) = log(a) - log(b) und das dB ist ein logarithmisches Maß)
+
+<li><strong>LA:</strong>
+steht für Look Ahead. Der Envelope-Designer kann also quasi in die Zukunft sehen, indem er das eigentliche Signal verzögert, als Eingangssignal für die Detektorschaltung jedoch das unverzögerte Signal benutzt. Die dadurch entstehende interne Latenz wird der Host-Software mitgeteilt, so dass deren interne Latenzkompensation (falls vorhanden) den Zeitversatz ausgleichen kann.
+
+<li><strong>Vol:</strong>
+Die Gesamtlautstärke.
+
+<li><strong>Dry/Wet:</strong>
+Eigentlich ist der Envelope-Designer - wie alle Dynamics - ein typischer Insert-Effekt so dass ein Dry/Wet Regler normalerweise nicht gebraucht wird (d.h. es wird normalerweise nur das Effektsignal genutzt (entspricht 100% wet)). Aber naja…eventuell kann es ja doch ganz nützlich sein, einen solchen Regler zu haben.
+</ul>
+
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Fazit:</strong>
+<br>
+Im Vergleich zum Vorbild - dem SPL Transient-Designer - bietet der Envelope Designer einige Parameter mehr. Wer daher die einfache Bedienbarkeit des Vorbilds vermisst, sollte einfach die Hüllkurvenparameter auf ihren voreingestellten Werten lassen und nur mit den beiden "Gain"-Reglern arbeiten. Auf die Attack/Release Zeiten der Hüllkurvenverfolger hat der Benutzer beim Transient-Designer keinen Zugriff - diese sind hier interne fest eingestellte Parameter. Jedoch verzichtet der Envelope-Designer auf die unabhängige Verarbeitung beider Stereo-Kanäle - als Detektoreingangssignal wird immer die Mischung aus beiden Kanälen genommen, der Envelope-Designer arbeitet also grundsätzlich im "Link"-Modus.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

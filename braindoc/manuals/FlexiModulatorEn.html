@@ -1,0 +1,261 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Flexi-Modulator Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Flexi-Modulator Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/FlexiModulator544x728.jpg" width=544 height=728 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Flexi-Modulator?:</strong>
+<br>
+Flexi-Modulator is a VST-plugIn for the creation of so called delayline based modulation effects. The range of these effects includes vibrato, chorus/ensemble, flanger and modulated echos. Slapback/doubling effects and resonators are also possible (although they are not really modulation effects). These different effects all rely on the same basic technique and only differ in the setting of certain parameters. In Flexi-Modulator, these parameters are adjustable in a wide range, so that all these effect can be realized within one single plugIn (as well as everything which falls in between).
+
+<p>
+<strong>What about Phasing?:</strong>
+<br>
+Sometimes the phaser is mentioned in the context of modulation effects. However, although sonically near to the flanger, the phaser is based on a completely different technique.A  phaser does not rely on modulating a delay-line but rather on modulating a chain of allpass filters. Therefore, phasing is not possible with this plugIn.
+
+<p>
+<strong>How does it work?:</strong>
+<br>
+All the effecs mentioned above (except vibrato) are based on delaying the input signal by means of a delay-line and mixing the delayed signal with the original signal. The thing gets interesting when the delay time of the delay-line is modulated (for instance by means of a LFO). This results in a modulation of pitch in the output signal of the delayline which was not present in the input signal. If we now take several modulated delay-lines (each of which with a different modulation frequency, of course) and mix everything together, we get a nice ensemble effect. One can also feed back the output of a delay-line to its input - this results in either echo effects (if the delay-time is higher than about 50 ms) or resonator effects (when the delay-time is in the range of periods of audible frequencies). 
+
+<p>
+<strong>About Latency:</strong>
+<br>
+Depending on the context in which the plugIn is currently used, internal latencies can arise, because the output of a delay-line is always a delayed version of the input signal. This delay can be intentional, for example when the plugin is used as send/return or insert with dry signal components for the creation of - say - an echo effect. In other contexts the internal delay is undesireable, for example when using the plugIn as a vibrato - in this case, the plugIn is used as insert and only the wet component (which is the delayed component) is used. The internal latency then would be equal to the (average) delay-time of the delay-line. The automatic latency compensation of VST host programs is based on the procedure, that the plugIn tells the host what internal lantency it has. However, the Flexi-Modulator can't recognize in which context it is currently used, so it always tells an internal latency of zero. Here the user has to compensate for latency manually if the occasion arises. But maybe this will not be necesarry when the average delay time is very small.
+
+<p>
+<strong>The Concept:</strong>
+<br>
+Flexi-Modulator provides 6 independent delay-lines, the output signal of which can be individually be routed to the left and right output of the plugIn. Each delay-line has a feedback loop with built in lowpass- and highpass-filter and a LFO for the modulation of the delay time. The set of parameters for each delayline is identical.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>general parameters for each delay-line:</strong>
+<ul>
+<li><strong>Mix:</strong>
+As there are stereo-signals  at the input of the plugIn, we have a controller for the ratio by which the two input signals should go to the input of the individual delay-lines. Hard-left: only the left input channel goes to the delay-line, center: both channels go to the delay-line by equal amounts, hard-right: only the right channle goes to the delay-line.
+
+<li><strong>L:</strong>
+This parameter controls the volume of the delay-line output in left output channel of the plugIn. The value is not scaled in dB (as it is common for volume controllers) but it is a raw multiplication factor for the following reason: with a dB-scale no negative amplitudes (amplitudes with opposite phase) are possible and sometimes one might want to have the output of the delay-line with opposite phases on both stereo channles. When the knob is in center postion (0), the delay-line output will not be present on the left channel at all, in hard-right position (1) with full amplitude and in hard left position (-1) with full amplitude and opposite phase.
+
+<li><strong>R:</strong>
+The same for the right output channel of the plugIn. If both knobs (L and R) are in center position (0), the respective delay-line will be switched off. This ensures that each delay-line does only need CPU-power if its output is actually used.
+
+<li><strong>Dly:</strong>
+This paramter controls the delay time of the delay-line. As we are dealing with a LFO-modulated delay time here, this value represents an average value. The (average) delay-time is the relevant parameter when deciding which effect we want to achieve. A very small average delay-time (a few ms) results in the flanger effect, larger average delay times (in the range of 10 - 25 ms) result in a chorus effect. Even larger delays (>50 ms) will result in an echo effect.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Feedback-Parameters (FB):</strong>
+<ul>
+<li><strong>Amt:</strong>
+abbreviates amount. This controls the amount, by which the output of the delay-line will be fed back to it's input. The unit is percent. The feedback can be postitive or negative and can be driven up to 150%. With values above 100%, however, the system will become unstable in general, i.e. it goes into self-oscillation (sometimes the filters in the feedback-loop can attenuate the signal, so that a setting slightly above 100% will not always result in self-oscillation). This self-oscillation can produce interesting sounds - the plugIn mutates from an effect to a sound generator in this case. In the feedback loop there is also a clipper to ensure that self-oscillation will not produce infinite amplitudes.
+
+<li><strong>LPF and HPF:</strong>
+These are the cutoff frequencies of the lowpass- and the highpass-filter within the feedback loop. These are filters of first order with a slope of 6 dB/Oct, which mimic simple analog RC-filters.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>The LFO's:</strong>
+<br>
+Each delay-line has its own LFO (Low Frequency Oscillator) for the modulation of the delay-time. In general, LFO's are used to modulate certain sound parameters over time. For LFO's it is therefore important to be capable of producing interesting time trajectories - as opposed to audio oscillators where the spectral content is mostly of greater interest. That's why the LFO's used here provide a special collection of waveforms and some parameters to further shape these waveforms. The parameters are:
+
+<ul>
+<li><strong>Wave:</strong>
+Here, the basic waveform is chosen. In addition to some well known standard waveforms, there are waveforms which result from the addition of the waveform with pitch-shifted versions of itself (where the shifted versions are spaced in octaves). It is most easily explained by means of an example: the waveform "2sines" consists of two sine waves (of equal amplitude) where the second sine wave is one octave above the first - this means it's frequency is twice the frequency of the first wave. The waveform "3sines" consists of three sine waves - the third frequency is two octaves above the first and therefore has 4-times the frequency of the first. And so on... With the other wvaeforms it is analogous. This makes it possible to create somewhat self-similar or "fractal" modulations. An "Alt" in the name of the waveform stands for "Alterning Sign" - here the odd octaves (1, 3, 5, ...) are added with positive signs whereas the even octaves (2, 4, 6, ...) are added with negative signs.
+
+<li><strong>Frq:</strong>
+The frequency of the LFO. Depending on, what "Sync-Mode" is chosen, the adjustment is made in Hz (when the is no sync at all), in terms of a note-length (when the LFO's are tempo-synchronized) or as a note-offset to the incoming MIDI-note (when the LFO-frequecies are chosen to be "synced" to MIDI-notes - synced means here, that the LFO-frequency is that of the associated MIDI-note, i.e. an audio-frequency).
+
+<li><strong>Amt:</strong>
+again, abbreviates amount. This parameter controls the depth of the modulation of the delay-time. The unit is percent, whereas 100% is the maximum possible modulation stroke. The maximum possible stroke itself depends on the average delay-time (because the delay-time cannot be down-modulated to less than zero). This means that the absolute modulation stroke will be higher for higher avarage delay-times - or, stated differently, with a larger average delay-time, there are deeper vibratos possible. So don't be surprised when the absolute modulation depth changes when tweaking the "Dly"-knob - readjust with "Amt".
+
+<li><strong>Sym:</strong>
+This controls the symmetry of the waveform. When the parameter is less than 50%, the first half wave will be played faster and the the second halfwave will be played slower (to keep the overall period unchanged). It is in principle a kind of pulse-width adjustment, when the waveform is chosen to be a pulse wave.
+
+<li><strong>Phs:</strong>
+The start-phase of the oscillator, which is the point within the waveform to which the oscillator is set when it is re-triggered. Triggering can be done either via the graphical user interface or via MIDI-note events - MIDI implementation will be explained later.
+
+<li><strong>APF:</strong>
+This controls the characteristic frequency of an allpass filter which is in chain to the oscillator. An allpass-filter lets all frequencies pass with the same amplitude but introduces a frequency dependent phase shift. With this, the phases of the overtones within the LFO-waveform can be shifted against each other, what also implies an alteration of the waveforms time-domain shape.
+
+<li><strong>HPF:</strong>
+There is also a highpass-filter, the cutoff frequency of which is controlled here. Certainly, a highpass also influences the time-domain shape of a wavefrom - for example it turns a saw wave into a wave which reminds on a capacitor loading curve or it bends the constant phases of a square wave to exponentially decaying curves.
+
+<li><strong>Att und Rel:</strong>
+The only thing which might be missing so far is a lowpass. In the time-domain, lowpass filters are used to smooth sudden changes or discontinueities in a signal, which for instance occur in saw and square waveforms. If a lowpass-filter is used to smooth a time-domain control signal, this is often called a "slew-rate limiter" in the language of sounddesigners. A sudden change in the modulation waveform would result in a sudden change of the delay-time here, which would cause an audible click. That's why the LFO-wave is smoothed with such a slew-rate limiter - the only difference is, that this slew-rate limiter here also distinguishes between rising and falling edges. "Att" determines the attack time for rising edges, "Rel" determines the deay-time for falling edges. Technically this is equal to a lowpass-filter which switches back and forth between two time constants, depending on the incoming signal (if it is rising or falling).
+
+<li><strong>Ns:</strong>
+This is the volume of a noise generator which can be mixed to the LFO signal - this causes random modulations.
+
+<li><strong>LPF:</strong>
+The noise generator creates white noise in the complete audio frequency range - so we need to smooth this signal by means of a lowpass-filter, the cutoff frequency of which is controlled here.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Global parameters:</strong>
+<br>
+On the right side of the plugIn window there are the global parameters. These are in particular (from top-left to bottom-right):
+
+<ul>
+<li><strong>Dry-HPF:</strong>
+This is the cutoff frequnecy for a highpass-filter which is apllied to the dry signal (this is also a simple "RC-filter").
+
+<li><strong>Dry-LPF:</strong>
+There is a lowpass-filter, too...
+
+<li><strong>Dry/Wet:</strong>
+Mix-ratio between the dry and the wet signal.
+
+<li><strong>Wet-Env:</strong>
+Within this plugIn there is also an envelope follower which analyzes the amplitude of the incoming signal. This extracted envelope can be applied to the wet signal. This can be used - for instance - to keep the transient component of the incoming signal dry and apply effect signal only to the sustained component. The "Wet-Env" knob controls, by which amount the amplitude envelope of the input signal should be applied to the wet-signal.
+
+<li><strong>At and Re:</strong>
+Such an envelope follower always has an attack an a release time. These are controlled here.
+
+<li><strong>Wet-HPF and Wet-LPF:</strong>
+As you surely have guessed - these are cutoff frequencies of a highpass and a lowpass-filter which is applied to the wet signal.
+
+<li><strong>Env->LFO:</strong>
+The envelope follower which was already mentioned, can also be used to control the depth of the modulation by the LFO's. This can be used - for instance - to apply a vibrato only to the suatained and/or longer lasting components of the input signal, i.e. a vibrato which builds up over time.
+
+<li><strong>Output:</strong>
+This controls the overall output amplitude.
+
+<li><strong>Trigger:</strong>
+With this button, the oscillators are re-triggered. That means they are set back to their starting point which is determined by the respective "phs" setting. But the oscillators can also be triggered by MIDI-notes on channel 01.
+
+<li><strong>Sync-Mode:</strong>
+Here you choose one of eight available sync-modes. The LFO-frequencies as well as the (average) delay times can be synchronized to the tempo of the VST host software. When the LFO's are tempo-synced (each setting where a "bpm2freq" appears) then the "Frq"-knobs of the LFO's adjust the LFO-frequencies in terms of a note length. This is useful for tempo-synced modulations. When the delay time is tempo-synced (each setting where a "bpm2delay" appears) then the delay-time is adjusted in terms of a note length. This is useful for tempo-synced echos. But the LFO-frequencies as well as the delay times can also be controlled via incoming MIDI-notes (for details, see MIDI-implementation). If a delay time is controlled by MIDI notes (each setting where a "note2Dly" appears), tonal resonator effects can be achieved. With MIDI-note controlled LFO-frequencies (each setting where a "note2Frq" appears) you can achieve frequency-modulations (the LFO then becomes an audio oscillator). The respective knobs ("Dly" and "Frq") adjust the delay time and frequency in terms of an offset to the incoming MIDI-note in these latter sync-modes.
+
+<li><strong>Parameter:</strong>
+Shows, which parameter was changed most recently.
+
+<li><strong>Value:</strong>
+Shows the value, to which this parameter was set.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter settings for different effects:</strong>
+<ul>
+<li><strong>Echo:</strong>
+Echo is a relatively simple effect. The average delay time is chosen such that the human ear is able to perceive the original signal and the delayed signal as seperate events - this occurs (as a rule of a thumb) from about 50 ms upwards. With the use of feedback, multiple echos can be realized, where these can become more and more dull with the use of the lowpass-filter within the feedback loop and/or more and more thin with the use of the highpass. Usually, there is no modulation of the delay time ("Amt" is set to zero) - however, when modulation is used, the echos will have a vibrato.
+
+<li><strong>Slapback:</strong>
+This effect arises, when the human hearing system is not able to distinguish between the original and delayed signal as seperate events, because the time lag between them is too small. This effect simulates the superposition of the direct and the reflected component of a sound source which is placed near a reflective surface, such as a hard wall. Typical delay times are in the range of 25-50 ms. Feedback and modulation is not used - this is therefore not really a "modulation" effect.
+
+<li><strong>Vibrato:</strong>
+Musically, vibrato is a modulation of the pitch. With a delay-line, this effect can be simulated, when a (relatively short) delay time is modulated by an LFO (with a sine waveform). It is only listened to the output signal of the delay-line, i.e. the "wet" signal. With higher average delay-times, the depth of the vibrato can be driven into ranges where the term "wobbler" would better describe the resulting sound. When using a triangle-wave instead of a sine, the pitch will switch back and forth between two pitches - therefore, a "triller" is created.
+
+<li><strong>Ensemble/Chorus:</strong>
+If you mix the output of a delay-line, which is set to a vibrato like setting, with the original signal, you have two slightly different signals. This sounds somehow like two (almost equal) sound sources playing together. If you modulate the delay time not (only) with an LFO but (also) with filtered noise, the pitch fluctioations will be random. This can simulate natural pitch-fluctuations of acoustic instruments. Now you can not only use the output of one delay-line, but you can use several delay-lines with different settings. This yiels the ensemble effect. I'm not quite sure where the dividing line between "ensemble" and "chorus" is, but I think "ensemble" does not involve any use of feedback. For chorus effects, there can be some amount of feedback, so the delay time should not be much less than 10-25 ms, because otherwise the feedback would introduce "resonator"-like effects (see below).
+
+<li><strong>Comb-filter/Flanger:</strong>
+The comb-filter effect occurs when the delay between the original and the delayed signal is very small (in the range of a few ms). This causes peaks and notches in the frequency spectrum of the resulting (mixed) signal which occur at positions which are integer multiples of some fundamental frequency. If the delay time is modulated by a LFO, these peaks and notches will slide back and forth on the frequency axis - this is known as "flanging". Again, the use of feedback can be introduced - this causes the spectral peaks to become more pronounced.
+
+<li><strong>Resonator:</strong>
+In principle, this is a comb-filter with very high amounts of feedback (near 100%) but without modulation of the delay time. The resonating comb-filter is fixed at a certain frequency. As the peaks in the spectrum are integer multiples of some fundamental frequency, this results in tonal effects, which are sometimes said to be "metallic". If there is a lowpass-filter in the feedback-loop, the higher harmonics will decay faster. This is the basic principle of the so called "Karplus-Strong" algorithm, which is used to create sounds that are similar to those of vibrating strings. Therefore, Flexi-Modulator can be used to implement the resonator part of Karplus-Strong synthesis. In Karplus-Strong based synthesizers, the exitation signal is often a noise-burst - here it is the incoming signal. Obviously, it is also possible to use the LFO to modulate the resonators resonances to apply a vibrato to the resulting tonal sound. It is recommended to use a sync-mode, in which the incoming MIDI-notes determine the delay times of the delay-lines (because the delay time is the period of the fundamental frequency which will be created).
+
+<li><strong>Bass Chorus/Bass Flanger:</strong>
+For chorus and flanger there are special versions for the electric bass, which are different from the versions for normal guitars, as they only apply the effect- or wet-signal to higher frequencies and leave the low frequency component dry. This is because low frequency components often sound blurred or smeared when they contain too much wet-components. Such a special bass-mode can be realized here by setting "Dry/Wet" to 50/50 and then highpass-filtering the wet-signal (by means of "Eet-HPF") and at the same time lowpass-filtering the dry signal (by means of "Dry-LPF"). This procedure, of course, is not restricted to chorus- and flanger-like effects.
+
+<li><strong>Self-oscillation:</strong>
+As mentioned earlier, the feedback factors can be driven into the range of self-oscillation. Without modulation, the result is not particularly interesting - it just creates a tone, the period of which is equal to the delay time. But with modulation of the delay time and the use of different waveforms, quite crazy rhythmic patterns will be produced. The effect of the filters in the feedback loop has also an interesting impact on the result. With additionally including some random modulation by means of the noise generators, the sounds can get very funny.
+
+<li><strong>Frequency-modulation:</strong>
+Frequency-modulation - just like Karplus-Strong resonators - is a technique which comes more from the world of synthesizers than from the world of effects. However, with Flexi-Modulator it is possible to introduce frequency-modulation within an effect plugIn. In principle, it is the same procedure as in creating a vibrato effect. The only difference is, that the modulation frequencies are in the audible range now. This is achieved by choosing a sync-mode in which the LFO-frequencies are controlled by MIDI-notes (the term "LFO" actually doesn't fit here anymore - it is an audio oscillator now).
+
+<li><strong>FM-resonator:</strong>
+When the delay times as well as the LFO-frequencies are controlled by MIDI-notes, it is even possible to create frequency modulated (Karplus-Strong)-resonators. Something quite unusual, I think.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>MIDI-Implementation:</strong>
+<br>
+It was stated, that delay times and LFO-frequencies can be controlled via incoming MIDI-notes. What exactly a particular note causes, depends on the MIDI-Channel on which it was sent. The following effects of the MIDI-notes will take place only when an appropriate sync-mode is chosen. The channel mapping is as follows:
+
+<ul>
+<li><strong>Channel 01:</strong>
+Note-On events on channel 1 re-trigger the LFO's.
+
+<li><strong>Channel 02:</strong>
+Note-On events on channel 2 affect all delay-times and all LFO-frequencies.
+
+<li><strong>Channel 03:</strong>
+Note-On events on channel 3 affect all delay-times.
+
+<li><strong>Channel 04:</strong>
+Note-On events on channel 4 affect all LFO-frequencies.
+
+<li><strong>Channel 05:</strong>
+Note-On events on channel 5 affect the delay time of delay-line 1.
+<li><strong>Channel 06:</strong>
+Note-On events on channel 6 affect the LFO-frequency of delay-line 1.
+
+<li><strong>Channel 07:</strong>
+Note-On events on channel 7 affect the delay time of delay-line 2.
+<li><strong>Channel 08:</strong>
+Note-On events on channel 8 affect the LFO-frequency of delay-line 2.
+
+<li><strong>Channel 09:</strong>
+Note-On events on channel 9 affect the delay time of delay-line 3.
+<li><strong>Channel 10:</strong>
+Note-On events on channel 10 affect the LFO-frequency of delay-line 3.
+
+<li><strong>Channel 11:</strong>
+Note-On events on channel 11 affect the delay time of delay-line 4.
+<li><strong>Channel 12:</strong>
+Note-On events on channel 12 affect the LFO-frequency of delay-line 4.
+
+<li><strong>Channel 13:</strong>
+Note-On events on channel 13 affect the delay time of delay-line 5.
+<li><strong>Channel 14:</strong>
+Note-On events on channel 14 affect the LFO-frequency of delay-line 5.
+
+<li><strong>Channel 15:</strong>
+Note-On events on channel 15 affect the delay time of delay-line 6.
+<li><strong>Channel 16:</strong>
+Note-On events on channel 16 affect the LFO-frequency of delay-line 6.
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Conclusion:</strong>
+<br>
+As can be seen from the number of the different realizable effects, Flexi-Modulator is flexible indeed and brings together what is often found in a whole bunch of different specialized effects. It is thus a kind of all-in-one effect (O.K. not really "all" but certainly a lot). The price to be paid for this flexibility is, that the whole plugIn might be a little bit complicated to use. The user needs some (at least basic) understanding of the internal concepts of the different effects to use this plugIn successfully. The plugIn is therefore more something for sounddesign freaks and not that appropriate to those who want to quickly produce some "fatter" sound (although this can also be done, by simply loading the presets).
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have fun in making music, Braindoc.
+
+</body>
+</html>

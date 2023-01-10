@@ -1,0 +1,60 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Auto-Pan Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Auto-Pan Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/AutoPan264x152.jpg" width=264 height=152 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Auto-Pan?:</strong>
+<br>
+Auto-Pan ist ein VST-PlugIn zur automatischen (d.h. in diesem Fall LFO-gesteuerten) Modulation der Panoramaposition eines Signals. Der LFO läuft tempo-synchron und kann entweder manuell über die grafische Benutzeroberfläche oder durch MIDI-Note-On Events neu getriggert werden.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter:</strong>
+<ul>
+<li><strong>Amt:</strong>
+steht für Amout. Hier kann der Benutzer einstellen, wie stark der Effekt wirken soll, d.h. nach wie weit links und rechts das Signal im Extremfall (wenn der Oszillator sein Maximum durchläuft) gepannt werden soll.
+
+<li><strong>Spd:</strong>
+steht für Speed. Dies ist die Geschwindigkeit des LFO's. Der LFO braucht dann für eine vollständige Periode genau die Zeitdauer des hier eingestellten Notenwerts.
+
+<li><strong>Phs:</strong>
+Die Startphase des Oszillators - Also diejenige Phasenlage, zu der der Oszillator gesetzt wird, wenn er neu getriggert wird.
+
+<li><strong>LPF:</strong>
+Da der Oszillator unter anderem Wellenformen bietet, die plötzliche Signalsprünge enthalten, kann man das Oszillatorsignal mit einem Tiefpassfilter glätten. Hier wird die Cutoff-Frequenz dieses Tiefpassfilters (in Hz) eingestellt.
+
+<li><strong>HPF:</strong>
+Ein Hochpassfilter ist auch vorhanden. Hier wird dessen Cutoff-Frequenz eingstellt.
+
+<li><strong>Wave:</strong>
+Hier wird die Grundwellenform des Oszillators ausgewählt. Zusätzlich zu den gewohnten Standard-Wellenformen stehen einige Wellenformen zur Verfügung, die sich aus Addition der Standardwellenformen mit sich selbst ergeben, wobei jeweils die gleiche Wellenform in mehreren Oktavlagen abgespielt wird. Am Beispiel lässt sich das am einfachsten verdeutlichen: die Wellenform "2Sines" besteht aus zwei Sinusschwingungen (gleicher Amplitude), wobei die zweite eine Oktave über der ersten liegt, also mit doppelter Frequenz schwingt. Die Wellenform "3Sines" aus dreien - die dritte liegt hier zwei Oktaven über der ersten, schwingt also mit vierfacher Frequenz. Damit kann man einerseits einen großen Modulationsbogen erzeugen, der z.B. über 4 Takte geht, innerhalb dessen wird aber noch ein kleinerer Modulationsbogen zweimal durchlaufen der nur über zwei Takte geht, und ein noch kleinerer der viermal durchlaufen wird und über einen Takt geht. Es sind hier sozusagen "fraktale", also selbstähnliche Modulationsverläufe möglich. Bei den anderen Wellenformen ist es analog. Ein "Alt" im Namen der Wellenform steht für "alternating sign" - hier werden die ungeraden Oktaven (1, 3, 5, …) mit positivem Vorzeichen und die geraden (2, 4, 6, …) mit negativem Vorzeichen addiert.
+
+<li><strong>Lin:</strong>
+Dieser Schalter schaltet in den linearen Panning Modus - hier ergibt sich die Lautstärke des rechten Kanals "R" einfach als R = 1 - L, wobei "L" die Lautstärke des linken Kanals darstellt. In der Grundeinstellung (Schalter deaktiviert) gilt eine Berechnungsvorschrift, die immer eine gleiche Gesamtleistung gewährleistet ("Constant Power Pan").
+
+<li><strong>Trig:</strong>
+Dieser Button triggert den LFO neu. Dies kann - wie bereits erwähnt - auch über MIDI-Note-On Events geschehen.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Stereo-Delay Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Stereo-Delay Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/StereoDelay288x340.jpg" width=288 height=340 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Stereo-Delay?:</strong>
+<br>
+Stereo-Delay is a VST-plugIn for the creation of delay- and echo-effects. It provides two independent delay-lines for the left and the right channel. The delaylines have a feedback-loop with highpass- and lowpass-filter and can also interact via crossfeedback. The delay-times are not specified in seconds or milliseconds, but musically as a note-value.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameters:</strong>
+<ul>
+<li><strong>BPM:</strong>
+Here you adjust the tempo of the song in BPM. If the knob is in hard-left position, the plugIn switches to the sync mode. In this mode the BPM value will be synchronized to the tempo of the VST-host software.
+
+<li><strong>Wet:</strong>
+Mix-ratio between dry and wet signal. If the delay is used as in send/return configuration, this control should be set to 100% wet.
+
+<li><strong>Cut:</strong>
+As already mentioned, both delay line lines have a lowpass- and a highpass-filter in their feedback loop, the cutoff frequencies of which can be adjusted separately. With the "Cut"-control, you can scale these cutoff frequencies with a factor - thus, the knob is a "macro"-parameter, since it controls the value of some other elementary parameters.
+
+<li><strong>Num:</strong>
+abbreviates Numerator - this is the numerator of the note value for the delay time.
+
+<li><strong>Den:</strong>
+abbreviates Denominator - this is therefore the denominator of the note value for the delay time. Via separately adjusting numerator and denominator, very odd note values are possible. In the screenshot printed above, both delay-lines are set to a value of one eighth note.
+
+<li><strong>HPF:</strong>
+Cutoff frequency of the highpass-filter in the feedback loop. It is a filter of first order with a slope of 6 dB/Oct.
+
+<li><strong>LPF:</strong>
+Cutoff frequency of the lowpass-filter in the feedback loop. This is also a first order filter with a slope of 6 dB/Oct.
+
+<li><strong>Grv:</strong>
+This is the so called "Groove"-parameter. It scales the delay time with a factor - if it is equal to one, it will be neutral, and the delay time is exactly the specified note-value. However, to achieve a nice stereo effect, it is desireable to have have slightly different delay-times in both channels. In the screenshot above, the delay time in the left channel is a little bit higher than 1/8 th ("Grv" > 1) and in the right channel a little bit lower than 1/8 th ("Grv" < 1).
+
+<li><strong>FB:</strong>
+abbreviates feedback. Here you control, how much of the output signal will be fed back to the input of the delay-line.
+
+<li><strong>CFB:</strong>
+The two "CFB"-knobs control the amount of crossfeedback between the two delay-lines. The upper one controls, how much of the output of the right delay-line will be fed back to the input of the left delay-line, for the lower knob it is the other way around.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+That's all. In some cases one can use a simple stereo delay instead of a more CPU-demanding reverb while preserving (and sometimes even improving) a nice, spacy effect. This is particularly true for pad-sounds.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

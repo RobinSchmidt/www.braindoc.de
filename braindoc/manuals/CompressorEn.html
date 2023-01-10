@@ -1,0 +1,66 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Compressor Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Compressor Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Compressor272x248.jpg" width=272 height=248 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Compressor?:</strong>
+<br>
+Compressor is a VST plugIn for the reduction of the dynamics of an input signal. Compressors achieve this goal by analyzing the amplitude envelope of the incoming signal and reducing the gain when the signal exceeds a certain threshold. This reduces the amplitude of the peaks in the audio signal. Now the signal can be amplified further without clipping/distortion. So at the end of the day we have a signal in which the loud parts stay as they are and the quiet parts are amplified. This increases the overall loudness of the signal. 
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameters:</strong>
+<ul>
+<li><strong>In:</strong>
+This is a gain controller for the input signal. The gain is applied before the compression and can therefore be used to drive the characteristic line of the compressor in different regions (the characteristic line is the function which maps the input level (in dB) to the output level (also in dB).
+
+<li><strong>Link:</strong>
+With this switch you decide whether both channels should be compressed equally ("Link" is on). In this case the amplitudes of both input channels are averaged in the analysis stage and the same gain value is applied to each channel. If "Link" is turned off, both channels are compressed separately according to their own amplitude envelope.
+
+<li><strong>Thr:</strong>
+abbreviates "Threshold". This is the amplitude value above which an attenuation of the signal will take place.
+
+<li><strong>Rat:</strong>
+abbreviates "Ratio". Here you adjust, by how much a signal above the threshold will be attenuated. The adjustment is in dB(in)/dB(out), this means for example: when you choose a ratio of 4:1, then an input signal which is 4 dB above the threshold will result in an output signal which is only 1 dB above the threshold.
+
+<li><strong>Knee:</strong>
+The classic characteristic line of a compressor is a straight line with a slope of 45 degrees below the threshold - an identity function. Above the threshold the line snaps off and has a slope lower than 45 degrees (the slope is 1/ratio then). To make this snapping off less abruptly, so called softknee characteristics were invented. Here the change of the slope occurs gradually. With the "Knee" parameter you can crossfade between a classic compression characteristic line and a soft characteristic line (which follows a tanh-function above the threshold).
+
+<li><strong>Att:</strong>
+The attack time of the envelope follower which analyzes the amplitude envelope. The smaller the value, the faster the compressor will reduce the gain when the threshold level is exceeded.
+
+<li><strong>Rel:</strong>
+The release time of the envelope follower. The smaller the value, the faster the compressor will go back to a gain of 1 when the the signal falls below the threshold again.
+
+<li><strong>LA:</strong>
+abbreviates "Look Ahead". With this option, the compressor can in effect detect peaks before they occur. This is not achieved by opening a wormhole but rather by delaying the signal to be processed while still using the non-delayed signal for the amplitude detection. The resulting input/output latency is communicated to the host program, so that the host is able to compensate for this latency (a modern VST host should provide such a latency compensation).
+
+<li><strong>Out:</strong>
+This is a gain controller for the compressor output signal. In general, compression results in a reduction of the overall volume of the signal. This can be compensated here.
+
+<li><strong>Auto:</strong>
+If this switch is turned on, there will be an automatic gain of the compressed signal. This switch works independently from the manual output gain fader - it can be used additionally.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

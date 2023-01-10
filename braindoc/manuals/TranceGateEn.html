@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Trance-Gate Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Trance-Gate Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/TranceGate268x120.jpg" width=268 height=120 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Trance-Gate?:</strong>
+<br>
+Trance-Gate is a plugIn for the creation of gate effects. The opening and closing of the gate is triggered by incoming MIDI-notes - note-on events trigger the opening phase, note-off events trigger the closing phase. As opposed to gates with a built in step sequencer this has two advantages: first, it gives the user more flexibility in the rhythmic opening and closing because the user can take full advantage of all MIDI functions which the chosen sequencer software provides (different note-lengths for each step, changing rythms, etc.). And second: the plugIn is small and does not take much space on the monitor. ...and it did not take much time to implement it :-).
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameters:</strong>
+<ul>
+<li><strong>Gain:</strong>
+This is a gain value for the incoming signal. Taken alone, this seems not to make much sense in a gate-plugIn. Within the trance gate, however, this parameter can be made velocity dependent via the attached "Vel" control. You can therefore realize different volumes for the different steps.
+
+<li><strong>Vel:</strong>
+see above.
+
+<li><strong>Att:</strong>
+Attack time of the gate - this is the time which the gate needs to open after receiving a note-on event.
+
+<li><strong>Vel:</strong>
+This attack time can be made velocity dependent, too. Positive values will increase the attack time for velocities > 64 and decrease it for velocities < 64. For negative values, it is the other way around.
+
+<li><strong>Rel:</strong>
+Release time of the gate - the time, the gate needs for closing, after a note-off event has been received.
+
+<li><strong>Vel:</strong>
+works the same way, as the "Vel"-control for the attack time.
+
+<li><strong>Amt:</strong>
+abbreviates amount. This knob therefore controls the overall effect of the gate. In principle, this is somehow a crossfader between the original and the gated signal - just like a Dry/Wet control (although it is implemented differently).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>A little hint for practice:</strong>
+<br>
+When the gate is set to a somewhat higher attack time, it can make sense to give a small negative delay to the driving MIDI-track in order to have a fully opened gate at the relevant note positions instead of having a gate which now starts with its opening phase.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

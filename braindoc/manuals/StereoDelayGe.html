@@ -1,0 +1,71 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Stereo-Delay Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Stereo-Delay Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/StereoDelay288x340.jpg" width=288 height=340 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Stereo-Delay?:</strong>
+<br>
+Stereo-Delay ist ein VST-PlugIn zur Erzeugung von Delay- und Echo-Effekten für die PC Plattform. Es bietet zwei separate Delay-Lines für linken und rechten Kanal. Die Delay-Lines verfügen jeweils über eine Feedback-Schleife mit Hochpass- und Tiefpassfilter und können auch über Crossfeedback miteinander interagieren. Die Delay-Zeiten werden nicht in Sekunden oder Millisekunden eingestellt, sondern musikalisch als Notenwert.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter:</strong>
+<ul>
+<li><strong>BPM:</strong>
+Hier wird das Tempo des Songs in BPM (beats per minute) eingestellt. Wenn der Regler auf Links-Anschlag steht, schaltet das PlugIn in den Sync-Modus - in diesem Modus wird die BPM-Zahl zum Tempo des Host-Programms (in der Regel ein Sequenzer oder ähnliches) synchronisiert.
+
+<li><strong>Wet:</strong>
+Mischungsverhältnis zwischen Einganssignal und bearbeitetem Signal. Wenn das Delay als Send/Return-Effekt verwendet wird, sollte dieser Regler auf 100% wet eingestellt werden.
+
+<li><strong>Cut:</strong>
+Wie bereits erwähnt, verfügen beide Delay-Lines über eine Feedbackschleife mit Hoch- und Tiefpassfilter im Rückkopplungsweg, deren Cutoff-Frequenzen separat eingestellt werden können. Der Regler "Cut" multipliziert die hier eingestellten Cutoff- Frequenzen mit einem Faktor - es handelt sich hier also um einen so genannten "Makro-Parameter" da er andere Parameter beeinflusst.
+
+<li><strong>Num:</strong>
+"Num" steht für Numerator - hier stellt man den Zähler des Notenwertes für die Delay-Zeit ein.
+
+<li><strong>Den:</strong>
+"Den" steht für Denominator - es handelt sich also um den Nenner des Notenwertes für die Delay-Zeit. Durch die separate Einstellung von Zähler und Nenner sind auch sehr "krumme" Notenwerte möglich. Im abgebildeten Beispiel ist die Delay-Zeit in beiden Delay-Lines auf eine Achtelnote eingestellt.
+
+<li><strong>HPF:</strong>
+Cutoff-Frequenz des Hochpass-Filters in der Rückkopplungsschleife. Bei dem Filter handelt es sich um ein Filter erster Ordnung mit einer Flankensteilheit von 6 dB/Okt.
+
+<li><strong>LPF:</strong>
+Cutoff-Frequenz des Tiefpass-Filters in der Rückkopplungsschleife. Auch hier handelt es sich um ein Filter erster Ordnung mit einer Flankensteilheit von 6 dB/Okt.
+
+<li><strong>Grv:</strong>
+Dies ist der so genannte Groove-Parameter. Er skaliert die Delay-Zeit mit einem Faktor - wenn er auf 1 steht, entspricht die Delay-Zeit exakt dem eingestellten Notenwert. Um einen schönen Stereo-Effekt zu erzielen macht es Sinn, wenn die Delay-Zeiten auf den beiden Kanälen geringfügig verschieden sind. Im abgebildeten Beispiel ist die Delay-Zeit für den linken Kanal etwas länger als eine Achtelnote (Groove-Faktor gößer als 1), während sie im rechten Kanal etwas kürzer ist (Groove-Faktor kleiner als 1).
+
+<li><strong>FB:</strong>
+steht für Feedback. Mit diesem Regler stellt man ein, wie stark das Ausgangssignal der Delay-Line auf das Eingangssignal rückgekoppelt wird.
+
+<li><strong>CFB:</strong>
+Die beiden "CFB"-Regler regeln das Crossfeedback zwischen den beiden Delay-Lines. Der obere regelt, wie stark das Ausgangssignal der der rechten Delay-Line auf das Eingangsignal der linken Delay-Line "kreuz-rückgekoppelt" wird. Beim unteren Regler ist es genau umgekehrt.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+So, das war's auch schon. Oft kann man sich durch Einsatz eines einfachen Stereo-Delay Effekts den Einsatz eines CPU-hungrigen Halls sparen und hat trotzdem einen sehr schönen räumlichen Effekt - dies gilt insbesondere für Flächensounds. 
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

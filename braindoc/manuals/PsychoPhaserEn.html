@@ -1,0 +1,119 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Psycho-Phaser Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Psycho-Phaser Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/PsychoPhaser432x388.jpg" width=432 height=388 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Psycho-Phaser?:</strong>
+<br>
+Psycho-Phaser is a VST-plugIn for phasing effects. This effect arises, when sending the input signal through a chain of allpass-filters and mixing that filtered signal with the original signal. An allpass-filters lets all frequencies pass without any attenuation or amplification, but introduces a frequency-dependent phase-shift. When the filtered signal is mixed with the original signal, there will be notches in the frequency-content of the resulting signal at all frequencies at which the phase-shift in the filtered signal is some odd integer multiple of 180 degrees. In contrast to a flanger, these notches are not distributed at integer multiples of some fundamental frequency along the frequency axis - so they have no harmonic relationship. This is the most distinguishing feature between phasers and flangers (which are often regarded as somehow similar). If the characteristic frequencies of the allpass-filters are modulated over time (via an LFO), these notches slide back and forth on the frequency axis - this is phasing. Psycho-Phaser provides two independent allpass-chains for left and right channel, each of which with its own, tempo-synchronized LFO.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>General Parameters:</strong>
+<br>
+<ul>
+<li><strong>FiltMode:</strong>
+Here you can choose between different filter-modes. Besides the standard (first and second order) allpass-filters for the classic phaser-effect, there is also a notch-filter and two variants of a bandpass which allow for some additional variations of the phaser effect.
+
+<li><strong>LFOMode:</strong>
+The modulation of the filter-frequencies can occcur in a linear or in an exponential way. In the exponential mode, the frequencies are modulated up and down by the same musical interval and in the linear mode they are modulated up and down by the same frequency-difference.
+
+<li><strong>Stages:</strong>
+This is the number of allpass-filter units in the chain. The more filter stages, the more notches will occur, because the overall phase-shift of the filter chain increases with an increasing number of filter stages - so there will be more (odd) multiples of 180 degrees.
+
+<li><strong>Trig:</strong>
+With this button you can re-trigger the LFO's (reset them to their starting point). This can also be done by sending MIDI note-on events to the phaser.
+
+<li><strong>Dry/Wet:</strong>
+Ratio between original and filtered signal.
+
+<li><strong>Vol:</strong>
+The global output volume.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Feedback Parameters:</strong>
+<br>
+There is a feedback loop around this allpass-chain, this means the output of the allpass chain can be fed back to its input. This leads to more pronounced and with high amounts even resonating effects. The parameters are:
+
+<ul>
+<li><strong>FB:</strong>
+This is the amount of feedback and is adjusted in percent. The range goes from -150% to 150% - with absolute values larger than 100% the system in general becomes unstable, that is, is goes into self oscillation. This is probably more interesting for creation rather than the modification of sounds.
+
+<li><strong>HP and LP:</strong>
+Within this feedback loop there is a lowpass- and a highpass-filter the cutoff-frequencies of which are adjusted here. Maybe it should be mentioned that the FB, LP and HP knobs share the same display - it always shows the most recently modified parameter.
+
+<li><strong>CFB:</strong>
+These two knobs control the Crossfeedback between the two allpass-chains, that is, the output of the left allpass-chain can be routed to the input of the right allpass chain and the other way around. The arrows indicate the direction of this crossfeedback.
+
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>parameter for the left and right channel:</strong>
+<br>
+
+<ul>
+<li><strong>Frq:</strong>
+This is the characteristic frequency of the allpass filters (or the center frequency in the case of notch- or bandpass filter mode). That's gonna be modulated by the LFO.
+
+<li><strong>Q:</strong>
+The so called quality-factor of the filters. It has no meaning for the 1-pole APF filter mode because 1-pole filters don't have such a factor.
+
+<li><strong>Phs:</strong>
+This is a phase-switch for the filter output (which is applied prior to the feedback).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>LFO-parameters:</strong>
+<br>
+Directly next to the text "LFO" you choose the waveform of the LFO. The other parameters are:
+
+<ul>
+<li><strong>Amt:</strong>
+abbreviates amount. Here you can adjust the depth of the LFO-modulation. The unit is given in octaves. In the exponential LFO-mode, the filter-frequency is modulated this interval up and down, in the linear LFO-mode, the frequency is modulated this interval down and the same frequency difference up.
+
+<li><strong>Spd:</strong>
+Speed. This adjusts the time which the LFO needs for a complete cycle in terms of a note length.
+
+<li><strong>Phs:</strong>
+Here you control the start-phase of the LFO (the point within the waveform to which the LFO is set when it is re-triggered).
+
+<li><strong>Att:</strong>
+To smooth out discontinueities which are part of some waveforms, there is a slew-rate limiter in chain to the LFO. Here you adjust the attack-time of this slew-rate limiter - that is a minimum time for upward-jumps.
+
+<li><strong>Rel:</strong>
+Release time of the slew-rate limiter, that is a minimum time for downward-jumps.
+
+<li><strong>HPF:</strong>
+Also included is a highpass-filter which also shapes the waveform. The cutoff frequency is adjusted here.
+
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

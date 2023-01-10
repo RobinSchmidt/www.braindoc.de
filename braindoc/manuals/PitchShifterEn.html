@@ -1,0 +1,67 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Pitch-Shifter Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Pitch-Shifter Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/PitchShifter248x220.jpg" width=248 height=220 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Pitch-Shifter?:</strong>
+<br>
+Pitch-Shifter is a VST-plugIn for shifting the pitch of the input signal without affecting the overall length. Normally pitch and length of audio material are coupled - if you simply increase the playback-tempo, the pitch raises and the length shortens. Pitch-Shifter uses a delayline-based granular algorithm to decouple the pitch from the length, so that the overall length of the signal will not be affected (which would not make much sense in a realtime-plugIn anyway). In such an algorithm the signal is subdivided into small chunks, called "grains". These grains are then played back at a different speed and looped if necessary (this occurs in up-shifting), or not played to the end (this occurs in downshifting). There are always two grains played back at the same time, where there is a crossfade, which fades back and forth between the two grains (at the loop-point the volume of one grain should be zero to avoid artifacts in the output signal).
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Technical Parameters:</strong>
+<br>
+At the left side of the plugIn window are the so called technical parameters. These parameters influence the sonic result, nevertheless they are not musical parameters because their impact on the output signal is caused by the imperfections of the granular synthesis approach:
+
+<ul>
+<li><strong>Window:</strong>
+As already mentioned, there are always two grains played back simultaneously, whereas the amplitude of each grain is determined by the position of the respective read-pointer ("tapOut") relative to the write pointer ("tapIn"). The sum of both grain-amplitudes should be always equal to one, so a triangular or cos^2 function would be a  possible choice. Maybe this is something for signal processing freaks. I do not hear any big difference between both windows.
+
+<li><strong>GrainSize:</strong>
+This parameter controls the length of the signal chunks. The unit is milliseconds. If there are audible artifacts, the grainsize can help to minimize them or modify them sonically.
+
+<li><strong>MonoIn:</strong>
+If this switch is active, only the left channel will be processed and the resulting signal is copied into the right output channel. This saves CPU-power when the input signal is a mono signal.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Musical Parameters:</strong>
+
+<ul>
+<li><strong>Coarse:</strong>
+The coarse control of the pitch-shifting in semitones.
+
+<li><strong>Fine:</strong>
+The fine control of the pitch-shifting in cents.
+
+<li><strong>FB:</strong>
+The output signal is always the sum of both (with the window function multiplied) "tapOuts". A pitch shifter with this internal working provides the possibility to feed back the output signal to the input - this is exactly what can be done here - FB abbreviates "Feedback". Because the output of a pitch-shifter is a pitch shifted version of the input signal, this leads to further pitch shifted versions with even higher amounts of shifting.
+
+<li><strong>Dry/Wet:</strong>
+Crossfader between the dry and wet signal.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Have much fun in making music, Braindoc.
+
+</body>
+</html>

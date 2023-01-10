@@ -1,0 +1,181 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Braindoc's VST-PlugIns</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">		
+</head>
+
+<body>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="../grafik/vst155x32.gif" width=155 height=32 ALT="VST-PlugIns">
+  </TD>
+ </TR>
+</TABLE>
+
+<p align=left>
+Wie auf der Startseite bereits gesagt, programmiere ich auch VST-PlugIns. VST steht
+für Virtual Studio Technology und ist eine offene PlugIn-Schnittstelle für alle Arten
+von Audio-PlugIns. Der VST-Standard wurde von der Audiosoftware-Firma Steinberg
+(<a href="http://www.steinberg.de" target="_blank">www.steinberg.de</a>) entwickelt
+und bietet Programmierern die Möglichkeit, auf einfache Art und Weise ihre eigenen Effekt-
+und Synthesizer-Ideen umzusetzen (danke Steinberg! ). Viele meiner eigenen PlugIn-Kreationen
+stelle ich auf dieser Seite als Freeware zur Verfügung. Für Feedback wie z.B. 
+Verbesserungsvorschläge, neue Ideen aber auch Bugreports bin ich sehr dankbar. Sämtliche von
+mir veröffentlichten PlugIns sind von mir nach bestem Wissen und Gewissen programmiert 
+und getestet worden. Dennoch kann man Fehler nie zu 100 Prozent ausschließen. Daher übernehme
+ich keine Verantwortung für Schäden, die durch den Einsatz meiner PlugIns entstehen. Momentan
+gibt es die PlugIns ausschließlich für die PC-Plattform, da mir ein Mac-Rechner nicht zur 
+Verfügung steht. Die PlugIns sind in Form von .zip-Archiven herunterladbar, diese Archive 
+enthalten eine .dll-Datei, die einfach in den VST-Ordner hineinkopiert werden kann. Außerdem
+sind bei einigen plugIns einige Presets im .fxp-Format enthalten. Die Bedienungsanleitungen stehen als .html Dateien online hier auf dieser Seite zur Verfügung.
+</p>
+
+<p>
+ <A HREF="../vst/Aggressor.zip"><b>Aggressor</b></A>
+ <br>
+Aggressor ist ein monophoner Synthesizer, der als VST-Instrument in so ziemlich jedes moderne MIDI/Audio - Sequenzerprogramm auf der PC-Plattform eingebunden werden kann. Der Synthi ist speziell für aggressive, prägnante Bass- und Lead-Sounds ausgelegt, wobei ein besonderer Schwerpunkt u.a. bei der authentischen Emulation von typischen TB-303-Sounds liegt. Die Architektur entspricht im Wesentlichen der klassischen Oszillator-Filter-Verstärker - Struktur, wobei jedoch die einzelnen Funktionsblöcke deutlich weitergehende Eingriffsmöglichkeiten als die meisten anderen Bass/Lead-Synthesizer bieten. 
+ <a href="../manuals/AggressorGe.html" target="_self">zur Bedienungsanleitung....</a>  
+
+<!-- <p>
+Aggressor ist noch in der Beta-Phase und wird (hoffentlich bald) als kommerzielles VSTi veröffentlicht werden. Aber auch die freie Demo Version wird viel mehr bieten, als so manch anderer Bass/Lead Synthesizer. --> 
+<p>
+Auf www.kvraudio.com habe ich im Forum einen Thread zu diesem Synth gestartet. Hier geht's dorthin:
+<a href="http://www.kvraudio.com/forum/viewtopic.php?t=119977" target="blank">http://www.kvraudio.com/forum/viewtopic.php?t=119977</a>
+ich, hoffe, ein wenig Feedback von hier zu bekommen
+
+<p>
+ <A HREF="../vst/ChannelTool.zip"><b>Channel-Tool</b></A>
+ <br>
+ Channel-Tool ist ein sehr einfaches PlugIn, mit dem man die Lautstärke, den Stereo-Mix 
+ und die Polarität bzw. Phase des Signals einstellen kann. Eigentlich habe ich es hauptsächlich
+ für mich selbst als "Template-" bzw. "Skeleton-" PlugIn programmiert, also als ein PlugIn, was 
+ ich als Ausgangspunkt für die Entwicklung von anderen PlugIns nehme. Aber nichtsdestotrotz
+ ist es auch manchmal in der Praxis ganz nützlich.
+</p>
+
+<p>
+ <A HREF="../vst/StereoDelay.zip"><b>Stereo-Delay</b></A>
+ <br>
+ Stereo-Delay ist ein PlugIn zur Erzeugung von Delay- und Echo-Effekten.
+ Es bietet zwei separate Delay-Lines für linken und rechten Kanal. Die 
+ Delay-Lines verfügen jeweils über eine Feedback-Schleife mit Hochpass- und Tiefpassfilter 
+ und können auch über Crossfeedback miteinander interagieren. Die Delay-Zeiten werden 
+ nicht in Sekunden oder Millisekunden eingestellt, sondern musikalisch als Notenwert. 
+ <a href="../manuals/StereoDelayGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/PitchShifter_v1.0.0.zip"><b>Pitch-Shifter</b></A> (Version 1.0.0)
+ <br>
+ Pitch-Shifter ist ein PlugIn zur Verschiebung der Tonhöhe des 
+ Eingangssignals. Normalerweise sind Tonhöhe und Länge des Audiomaterials aneinander 
+ gekoppelt - wenn man z.B. einfach etwas schneller abspielt, ist es insgesamt kürzer und 
+ die Tonhöhe geht nach oben. Beim Pitch-Shifter kommt eine Art delayline-basierter 
+ Granular-Synthese-Algorithmus zum Einsatz, der die Tonhöhe verändert ohne dabei die 
+ Gesamtlänge des Audiomaterials zu beeinflussen (was bei einem Echtzeit PlugIn natürlich 
+ sowieso nicht sinnvoll möglich wäre).
+ <a href="../manuals/PitchShifterGe.html" target="_self">zur Bedienungsanleitung...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/ShifterBank_v1.0.0.zip"><b>Shifter-Bank</b></A> (Version 1.0.0)
+ <br>
+ Shifter-Bank ist ein PlugIn zur Erzeugung von mehreren
+ tonhöhenverschobenen Versionen des Eingangssignals. Bei geringer Verstimmung der verschiedenen 
+ Stimmen zueinander (im Bereich zwischen wenigen Cents und einem Halbton) entstehen so Effekte, 
+ die man in Synthesizern oft als "Unisono" bezeichnet (in der Tat war es eine angeregte (und 
+ zum Teil aufgeregte) Diskussion über den Unisono-Effekt im Forum auf 
+ <a href="http://www.kvraudio.com" target="_blank">www.kvraudio.com</a>, die mich 
+ zu diesem PlugIn motivierte). Das PlugIn kann daher also genutzt werden um einen "fetteren" Sound 
+ zu produzieren. Bei stärkeren Verstimmungen (mehrere Halbtöne) erinnert der Sound eher an Effekte 
+ die benutzt werden um Stimmen unkenntlich zu machen. Wie auch im Pitch-Shifter kommt ein 
+ delaylinebasierter Granularsynthese-Algorithmus zum Einsatz.
+ <a href="../manuals/ShifterBankGe.html" target="_self">zur Bedienungsanleitung...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/LPCVocoder_v1.0.0.zip"><b>LPC-Vocoder</b></A> (Version 1.0.0)
+ <br>
+ LPC-Vocoder ist ein PlugIn zur Erzeugung von Vocoder-Sounds. Diese 
+ entstehen dadurch, dass man den Frequenzgang von einem Eignangssignal (dem so genannten 
+ Analysesignal oder Modulatorsignal) auf ein zweites Eingangssignal (das so genannte Synthese- 
+ oder Carriersignal) überträgt. Beim klassischen Vocoder kommen zur Analyse und Synthese 
+ Filterbänke zum Einsatz, beim LPC-Vocoder hingegen kommt ein einziges adaptives Filter zum 
+ Einsatz, welches jedoch komplexe Frequenzgänge mit vielen Peaks realisieren kann. LPC ist 
+ eine Akürzung für Linear Predictive Coding, eine Technik aus der Signalverarbeitung, die zur 
+ Komprimierung von Audiosignalen z.B. in der digitalen Mobilfunktechnik verwendet wird. 
+ <a href="../manuals/LPCVocoderGe.html" target="_self">zur Bedienungsanleitung...</a>  
+</p>
+
+<p>
+ <A HREF="../vst/Compressor_v1.0.1.zip"><b>Compressor</b></A> (Version 1.0.1)
+ <br>
+ Compressor ist ein PlugIn zur Reduzierung der Dynamik des Eingangssignals. 
+ Kompressoren tun dies, indem sie die Amplitudenhüllkurve des Eingangssignals analysieren und das 
+ Signal absenken, wenn es einen bestimmten Schwellwert überschreitet. Dadurch werden kurzzeitig 
+ auftretende Peaks im Signal in ihrer Amplitude reduziert, so dass man das Gesamtsignal nach der 
+ Kompression (übersteuerungsfrei) verstärken kann. Als Endresultat bekommt man somit ein Signal, 
+ bei dem die lauten Stellen ungefähr so bleiben wie sie sind, die leiseren Stellen jedoch verstärkt 
+ werden. Dies führt zu einem Signal dessen Pegel nicht allzu stark schwankt und das dadurch insgesamt 
+ lauter und "kompakter" wirkt. 
+ <a href="../manuals/CompressorGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/TranceGate_v1.0.0.zip"><b>Trance-Gate</b></A> (Version 1.0.0)
+ <br>
+ Trance-Gate ist ein PlugIn zur Erzeugung von Gate-Effekten. Das Öffnen und Schließen des Gates 
+ wird dabei durch MIDI-Noten ausgelöst. Note-On Events triggern die Öffnung des Gates, Note-Off Events 
+ triggern das Schließen des Gates. Gegenüber einer Implementierung mit eingebautem Step-Sequenzer bietet 
+ dieser Ansatz zwei Vorteile: zum einen hat der Benutzer viel mehr Flexibilität beim rhythmischen 
+ Öffnen und Schließen des Gates, da ihm alle MIDI-Möglichkeiten des jeweiligen Sequenzerprogramms zur 
+ Verfügung stehen (beliebige Notenlängen, wechselnde Rhythmen, etc.), Zum anderen ist das PlugIn schön 
+ klein und nimmt wenig Platz auf dem Bildschirm ein. ...und war auch wenig aufwändig zu programmieren :-).
+ <a href="../manuals/TranceGateGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/AutoPan_v1.0.0.zip"><b>Auto-Pan</b></A> (Version 1.0.0)
+ <br>
+ Auto-Pan ist ein VST-PlugIn zur automatischen (d.h. in diesem Fall LFO-gesteuerten) Modulation der 
+ Panoramaposition eines Signals. Der LFO läuft tempo-synchron und kann entweder manuell über die grafische 
+ Benutzeroberfläche oder durch MIDI-Note-On Events neu getriggert werden.
+ <a href="../manuals/AutoPanGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/EnvelopeDesigner_v1.0.1.zip"><b>Envelope-Designer</b></A> (Version 1.0.1)
+ <br>
+Envelope-Designer ist ein VST-PlugIn für die PC-Plattform mit dem man das Verhältnis zwischen Transienten und gehaltenen bzw. abklingenden Phasen des Eingangssignals einstellen kann.
+ <a href="../manuals/EnvelopeDesignerGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/StereoEnhancer_v1.0.0.zip"><b>Stereo-Enhancer</b></A> (Version 1.0.0)
+ <br>
+Stereo-Enhancer ist ein VST-PlugIn für die PC-Plattform zur Modifizierung der Stereo-Basisbreite eines Signals. Die Basisbreitenänderung kann für tiefe, mittlere und hohe Frequenzen getrennt eingestellt werden. Für die Trennung der verschiedenen Frequenzbereiche kommen linearphasige FIR-Filter zum Einsatz, unter Anderem, um zu gewährleisten, dass die Summe der (noch nicht bearbeiteten) gefilterten Signale wieder exakt das Originalsignal rekonstruiert. 
+ <a href="../manuals/StereoEnhancerGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/PsychoPhaser_v1.0.0.zip"><b>Psycho-Phaser</b></A> (Version 1.0.0)
+ <br>
+Psycho-Phaser ist ein VST-PlugIn zur Erzeugung von Phasing-Effekten. Dieser Effekt entsteht dadurch, dass man das Signal durch eine Kette von Allpass-Filtern schickt, und dieses gefilterte Signal mit dem Originalsignal mischt. Ein Allpass-Filter lässt alle Frequenzen mit unveränderter Amplitude "passieren", verursacht jedoch eine frequenzabhängige Phasenverschiebung. Wenn man das Filterausgangssignal mit dem Originalsignal mischt, entstehen so Peaks und Kerben im Frequenzgang (im Gegensatz zum Flanger sind diese jedoch nicht äquidistant auf der Frequenzachse verteilt und haben somit keine harmonische Struktur). Wenn man jetzt die charakteristischen Frequenzen dieser Allpass-Filter zeitlich moduliert, wandern die Peaks und Kerben auf der Frequenzachse hin und her - das ergibt dann den Phaser Effekt.
+ <a href="../manuals/PsychoPhaserGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+<p>
+ <A HREF="../vst/StereoFlanger_v1.0.1.zip"><b>Stereo-Flanger</b></A> (Version 1.0.1)
+ <br>
+Stereo-Flanger ist ein VST-PlugIn zur Erzeugung von Kammfilter- und Flanger-Effekten. Ein Kammfilter verzögert das Eingangssignal um eine gewisse Zeit und mischt dieses verzögerte Signal mit dem Originalsignal. Durch Interferenz zwischen Originalsignal und verzögertem Signal entstehen Kerben (Notches) und Peaks im Frequenzgang des gemischten Signals - Peaks entstehen überall dort, wo Original- und verzögertes Signal in Phase sind und sich somit verstärken, Kerben entstehen dort wo die Phasenlage zwischen Originalsignal und verzögertem Signal genau 180° beträgt - hier löschen sich die beiden Signale gegenseitig genau aus. Die Positionen der Peaks und Kerben im Frequenzgang werden dabei von der Verzögerungszeit bestimmt, in jedem Falle aber folgen sie einer harmonischen Reihe, d.h. alle Peak- und Notch-Frequenzen sind ganzzahlige Vielfache einer bestimmten Grundfrequenz. Wenn man das Ausgangssignal der Verzögerungsstrecke ("Delayline") wieder auf ihren Eingang zurückkoppelt treten die Peaks im Frequenzgang stärker hervor - auf diese Weise lassen sich resonatorartige Effekte erzielen. Wenn die Verzögerungszeit der Delayline zeitlich moduliert wird (z.B. mit einem LFO), bewegen sich die Peaks und Kerben auf der Frequenzachse hin und her - dies bezeichnet man als "Flanging". Stereo-Flanger besitzt jeweils für linken und rechten Kanal eine eigene Delayline, deren Verzögerungszeit jeweils über einen LFO moduliert wird.
+ <a href="../manuals/StereoFlangerGe.html" target="_self">zur Bedienungsanleitung...</a> 
+</p>
+
+
+
+</body>
+</html>

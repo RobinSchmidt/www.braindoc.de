@@ -1,0 +1,64 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Trance-Gate Bedienungsanleitung</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Trance-Gate Bedienungsanleitung</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/TranceGate268x120.jpg" width=268 height=120 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>Was ist Trance-Gate?:</strong>
+<br>
+Trance-Gate ist ein VST-PlugIn zur Erzeugung von Gate-Effekten. Das Öffnen und Schließen des Gates wird dabei durch MIDI-Noten ausgelöst. Note-On Events triggern die Öffnung des Gates, Note-Off Events triggern das Schließen des Gates. Gegenüber einer Implementierung mit eingebautem Step-Sequenzer bietet dieser Ansatz zwei Vorteile: zum einen hat der Benutzer viel mehr Flexibilität beim rhythmischen Öffnen und Schließen des Gates, da ihm alle MIDI-Möglichkeiten des jeweiligen Sequenzerprogramms zur Verfügung stehen (beliebige Notenlängen, wechselnde Rhythmen, etc.), Zum anderen ist das PlugIn schön klein und nimmt wenig Platz auf dem Bildschirm ein. …und war auch wenig aufwändig zu programmieren :-).
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Parameter:</strong>
+<ul>
+<li><strong>Gain:</strong>
+Hier wird ein Verstärkungsfaktor für das Signal eingestellt. Für sich allein genommen macht dies (innerhalb eines Gate-Effekts) noch nicht viel Sinn - beim Trance-Gate kann diese Verstärkung jedoch über den zugehörigen "Vel"-Regler von der Anschlagstärke ("Velocity") der hereinkommenden MIDI-Note abhängig gemacht werden. Damit kann man verschiedene Lautstärken für die verschiedenen Steps realisieren.
+
+<li><strong>Vel:</strong>
+siehe oben.
+
+<li><strong>Att:</strong>
+Attack-Zeit des Gates - also diejenige Zeit, die das Gate zum Öffnen braucht, nachdem ein Note-On Event empfangen wurde.
+
+<li><strong>Vel:</strong>
+auch diese Attack-Zeit kann von der Anschlagstärke abhängig gemacht werden. Positive Werte (Regler über der Mitte) bewirken eine Verlängerung der Attack-Zeit bei Noten mit einer Velocity größer als 64 und eine Verkürzung bei Noten mit Velocity kleiner 64. Bei negativen Werten ist es umgekehrt.
+
+<li><strong>Rel:</strong>
+Release-Zeit - also diejenige Zeit, die das Gate zum Schließen braucht, nachdem ein Note-Off Event empfangen wurde.
+
+<li><strong>Vel:</strong>
+wirkt genauso wie der Vel-Regler bei der Attack-Zeit.
+
+<li><strong>Amt:</strong>
+steht für Amount. Hier stellt man also ein, wie stark das Gate insgesamt wirken soll. Im Prinzip stellt man hier ein Mischungsverhältnis zwischen Eingangssignal und ge-gate-tetem Signal ein - es ist also so eine Art Dry/Wet Regler.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Praxis-Tipp:</strong>
+<br>
+Wenn das Gate auf eine etwas längere Attack-Zeit eingestellt ist, kann es Sinn machen, die ansteuernde MIDI-Spur zeitlich ein wenig vorzuziehen, damit "auf der Eins" das Gate schon voll geöffnet ist, und nicht erst jetzt mit der Öffnung beginnt.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>

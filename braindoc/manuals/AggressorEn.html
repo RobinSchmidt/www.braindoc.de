@@ -1,0 +1,477 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+
+<html>
+<head>
+	<title>Aggressor Manual</title>
+	<link rel=stylesheet type="text/css" href="../braindocsStyle.css">
+</head>
+
+<center><h1>Aggressor Manual</h1></center>
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Aggressor-OverviewScreen856x456.jpg" width=856 height=456 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+<strong>What is Aggressor?:</strong>
+<br>
+Aggressor is a monophonic synthesizer, which can be used as a VST instrument. The synth was specifically designed to produce aggressive bass- and lead-sounds where special attention was paid on the ability to authentically emulate the typical sound of the famous TB-303. The architecture is based on the classic VCO-VCF-VCA structure where each of the building blocks goes far beyond the typical implementation of bassline synths. The user interface resembles the synthesis architecture by dividing the parameters into functional groups, where for each of these groups a seperate editor screen exists. One screen is dedicated to the settings of the 3 oscillators, a second screen is deicated to the modulations of these oscillators, a third one to filter settings and a fourth one to the amplitude envelopes and the distortion settings. Additionally there is the so called "overview screen" which puts together the most important parameters from the 4 dedicated screens - this is also the default screen which is shown when the plugIn is opened and which is shown in the screenshot above. The choice of the editor-screen is made with the menu "Screen" in the upper part of the plugIn window. I will begin with the explanation of the parameters with the global ones, which are visible in all 5 screen settings:
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Global Parameters:</strong>
+<ul>
+<li><strong>Screen:</strong>
+Here you switch between the different screens.
+
+<li><strong>Param:</strong>
+Shows the name of the most recently adjusted parameter.
+
+<li><strong>Value:</strong>
+Shows the value of the most recently adjusted parameter.
+
+<li><strong>Vol:</strong>
+the master volume control for the whole synthesizer.
+
+<li><strong>Vel:</strong>
+the small Knob right below the "Vol" knob is called "VolumeByVelocity" and controls, to which extent the note velocity should affect the overall volume (at vel=64 the volumes takes exactly the value which is determined by "Vol", at vel=1, the volume is "VolumeByVelocity" dB below "Vol" and at vel=127, the volume is "VolumeByVelocity" dB higher than "Vol")
+
+<li><strong>Sld:</strong>
+When a new note is played without having released the old one, than a slide will take place. With this control, you decide how long it takes to slide from the old note to the new one (the unit is ms).
+
+<li><strong>Acc:</strong>
+In this synth, there are several parameters which can be made velocity dependent (like for example the overall volume via "VolumeByVelocity"). "Accent" scales all these "ByVelocity" parameters with a factor between 0 and 1. The unit is percent.
+
+<li><strong>Slp:</strong>
+The envelopes in aggressor have an exponential characteristic. Besides other things, this implies, that the different envelope phases don not actually reach their target values, but rather approaching them aymptotically. The Slp-parameter is a scaling factor for the time constants and therefore controls, how close the envelope comes to the target value in the chosen time.
+
+<li><strong>Vib-Wave:</strong>
+Waveform of the pitch-LFO.
+
+<li><strong>Vib-Depth:</strong>
+Depth of the vibrato (in semitones).
+
+<li><strong>Vib-Speed:</strong>
+Frequency of the vibrato (in Hz).
+
+<li><strong>PWM-Wave:</strong>
+Waveform of the pulsewidth-LFO.
+
+<li><strong>PWM-Depth:</strong>
+Depth of the pulsewidth-modulation (in %).
+
+<li><strong>PWM-Speed:</strong>
+Frequency of the pulsewidth-modulation (in Hz).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<center><h1>The Oscillator-Screen</h1></center>
+<br>
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Aggressor-OscillatorScreen856x456.jpg" width=856 height=456 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+<p>
+The oscillator section provides 3 oscillators, where osc1 is a little bit different from the others: it can produce more than one voice at once (up to 127 - but this is overkill, mostly 1-7 voices are enough). Furthermore there are several ways in which the oscillators can interact: osc2 and/or osc3 can be syncronized to osc1, osc1 can be amplitude- and/or frequency-modulated by osc2 and/or osc3. Frequency modulation is also implemented as feedback-FM for osc1. And finally, all 3 possible ringmodulation signals can be mixed to the output. The parameters of osc1 are in particular:
+
+<ul>
+<li><strong>Wave:</strong>
+The basic waveform of the oscillator.
+
+<li><strong>Phs:</strong>
+This is the startphase of the oscillator (the point inside the waveform, where the oscillator starts when a new note is triggered).
+
+<li><strong>Pitch-Ramp:</strong>
+All oscillators have a simple ramp-envelope for their pitch. "Start" controls the value, at which the oscilltor starts (in semitones with respect to the actually played MIDI-note). This parameter can be made velocity-dependent via the attached "Vel" control. "Time" controls the time, which the ramp needs to reach the "End" value (approximately, because of the exponential characteristic of the envelope, see above). "End" is the end value of the ramp - in most cases you will set this to +-0 unless you want to detune the oscillator).
+
+<li><strong>Amp-Ramp:</strong>
+For the amplitude, there is also a ramp envelope for each of the 3 oscillators. The parameters are similar to the pitch-ramp - with the only difference, that in this case you don't control the pitch in semitones but the amplitude in dB.
+
+
+<li><strong>Sym:</strong>
+This parameter controls the symmetrry bewtween the to half-periods of the oscillator - in the middle (50%), both half-periods will take the same time. With values smaller tahn 50%, the first half-period will be shortened and the second half period will be lenghtened (in order to keep the overall frequency constant). When the waveform is a pulse-wave, then this parameter can be called pulse-width (this has nothing to do with PWM in the first place, because it is a static pulsewidth setting here).
+
+<li><strong>LPF und HPF:</strong>
+Each oscillator has its own static 6 dB/oct-filter to pre-shape the oscillator wavefroms - for example to make the waveform smoother with a lowpass-filter (for a "warmer, more analog" sound) and/or to make the sound thinner with a highpass-filter. HPF anf LPF control the cutoff frequencies of these highpass- and lowpass-filters.
+
+<li><strong>Density:</strong>
+As already mentioned, osc1 is capable of producing more than one voice to create a fatter sound (the voices will have to be slightly detuned, but more on this later). The "Density"-parameter controls the number of voices to be created. I think, I was a little bit too generous when deciding about the range of this parameter - it goes up to 127 voices and this takes a lot of CPU-power then. So be a little bit careful, when twiddling this knob.
+
+
+<li><strong>Freq-Spacing:</strong>
+The detuning of the different voices can be linear (constant frequency differences between the voices) or exponential (constant musical intervals between the voices).
+
+<li><strong>Detune:</strong>
+ The "Detune" parameter controls the detuning of the outmost (in terms of their frequency) voices). It also comes with the ramp-envelope.
+
+</ul>
+
+<p>
+Osc2 and osc3 are similar, but they don't have the unison feature. But in addition to the parameters already known from osc1 they have a <strong>Tune</strong> and a <strong>Fine</strong> paraemter which are used for detunning osc2 and osc3 relatively to osc1. Let's now have a look on the interactions between the oscillators:
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<center><h1>The Modulation-Screen</h1></center>
+<br>
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Aggressor-ModulationScreen856x456.jpg" width=856 height=456 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+<p>
+
+<ul>
+<li><strong>Mode:</strong>
+Here you choose, if the modulation-signal for AM and FM should be the raw oscillator-output ("pre-filter"), the filtered oscillator-output ("post-filter"), where we are talking about the static LPF/HPF in the oscillator section here - not the multimode-filter which comes next. In the third option ("post-enevelope"), the modulation signal is taken after the amp-ramp has been applied. In the "off" postion, there will be no modulations at all. This saves some CPU-power.
+
+<li><strong>Sync to Osc 1:</strong>
+Here you decide whether osc2 and/or osc3 should be syncronized to osc1. Osc1 is always the sync master.
+
+<li><strong>AM 2->1 Ramp:</strong>
+Ramp for the amplitude modulation of osc1 by osc2 (osc2 modulates osc1's amplitude, i.e. osc1 is the carrier and osc2 is the modulator). The unit is percent.
+
+<li><strong>AM 3->1 Ramp:</strong>
+The same for AM of osc1 by osc3.
+
+<li><strong>FM 1->1 Ramp:</strong>
+Ramp for feedback-F of osc1.
+
+<li><strong>FM 2->1 Ramp:</strong>
+Ramp for the frequency modulation of osc1 by osc2 (osc2 modulates osc1's frequency, i.e. osc1 is the carrier and osc2 is the modulator). The unit is the so called modulation index.
+
+<li><strong>FM 3->1 Ramp:</strong>
+The same for FM of osc1 by osc3.
+
+<li><strong>RM 1*2 Ramp:</strong>
+Amplitude-ramp for the ringmodulation signal between osc1 and osc2 (which is derived by multiplying the outputs of osc1 and osc2).
+
+<li><strong>RM 1*3 Ramp:</strong>
+Amplitude-ramp for the ringmodulation signal between osc1 and osc2.
+
+<li><strong>RM 2*3 Ramp:</strong>
+Amplitude-ramp for the ringmodulation signal between osc2 and osc3.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<center><h1>The Filter-Screen</h1></center>
+<br>
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Aggressor-FilterScreen856x456.jpg" width=856 height=456 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+<p>
+This raw oscillator signal now goes into the filter section, the parameters of which are:
+
+<p>
+<strong>Filter-Settings:</strong>
+<br>
+
+<ul>
+<li><strong>Mode:</strong>
+A multimode filter obviously provides different modes. At the moment, the following modes are available:
+<ul>
+<li><strong>Bypass:</strong>
+saves CPU-power, when no filter is needed.
+<li><strong>Lowpass</strong>
+<li><strong>Highpass</strong>
+<li><strong>Bandpass, const skirt</strong>
+<li><strong>Bandpass, const peak</strong> (is mostly simply weaker)
+<li><strong>Bandreject</strong>
+<li><strong>Allpass:</strong> 
+lets all frequencies pass without any attenuation or amplification but introduces a frequency dependent phase shift.
+<li><strong>Peaking:</strong>
+boosts or attenuates a certain range of frequencies (like a parametric EQ). Boost or cut is controlled with the "Gain" knob.
+<li><strong>Low Shelf:</strong>
+boosts or attenuates low frequencies.
+<li><strong>High Shelf:</strong>
+boosts or attenuates high frequencies.
+<li><strong>Moog Ladder:</strong>
+This is a model of the famous Moog filter structure - 4 first order LPF's in series with negative feedback of the output to the input.
+<li><strong>303 Ladder:</strong>
+In principle the same structure as the moog filter, with the only difference, that one of the 4 filters has a higher cutoff-frequency. This causes the resonance frequency to go a little bit up and the amount of resonance is a little bit less.
+</ul>
+
+<li><strong>Slope:</strong>
+The slope of the filter.
+
+<li><strong>Freq:</strong>
+Obviously: the cutoff frequency of the filter (in Hz). In the case of bandpass, bandreject and peak-mode it is the center frequency.
+
+<li><strong>Vel:</strong>
+Dependency of the cutoff frequency on the velocity (in semitones with respect to the "Freq"-knob. at vel=64: freq is unchanged, at vel=1: freq is "Vel" semitones lower, at vel=127: freq is "vel" semitones higher). This parameter is to be scaled by the "Accent" paraemter (as all "Vel" parameters).
+
+<li><strong>Reso:</strong>
+Resonance of the filter.
+
+<li><strong>Vel:</strong>
+Dependency of the resonance on the velocity.
+
+<li><strong>Dry/Wet:</strong>
+Mixing ratio of the filter output signal and the filter input signal. It actually quite uncommon to mix the filtered signal with the raw oscillator signal. Normally filters are used as insert effects. But so what?
+
+<li><strong>Vel:</strong>
+Dependency of this mixing ratio on the velocity.
+
+<li><strong>Gain:</strong>
+Gain parameter for the "Peak" and "Shelf" modes.
+
+<li><strong>Drive:</strong>
+The Moog- and 303 models also take into account the nonlinearies of these filters at high amplitudes. With the "Drive" control, you can overdrive these filters. In other filter modes, this parameter has no effect.
+
+</ul>
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>The Filter-Envelope:</strong>
+<br>
+The filter envelope is a little bit different form the standard ADSR envelope. It has a start-value an attack-time, a peak-value, a hold-time, a deacy-time, NO sustain value, a realease-time and an end-value. In the sustain phase, the frequency is exactly the value determined by the "Freq" control - a sustain-control would simply scale this and would be redundant therefore. The parameters in particular:
+
+<ul>
+<li><strong>Start:</strong>
+Start-value of the filter envelope in semitones (with respect to the value of the "Freq" control).
+
+<li><strong>Attack:</strong>
+Time, the envelope needs to go from "Start" to "Peak" in ms.
+
+<li><strong>Peak:</strong>
+Peak-value of the filter envelope in semitones (with respect to the value of the "Freq" control).
+But it is also possible to set it to lower value that "Start".
+
+<li><strong>Vel:</strong>
+Dependency of the "Peak" value on the velocity. At vel=64: peak-value is unchanged, at vel=1: peak-value is "Vel" semitones lower, at vel=127: peak-value is "Vel" semitones higher. To be scaled by "Accent".
+
+<li><strong>Hold:</strong>
+Time, the filter stays at it's peak before beginnig the deacy-phase (in ms).
+
+<li><strong>Decay:</strong>
+Time, the envelope needs to go from it's peak-value to the sustain value (which is the value adjusted with the "Freq" knob).
+
+<li><strong>Release:</strong>
+Time to go from the sustain-value to the end-value after the note has been released (in ms).
+
+<li><strong>End:</strong>
+End-value of the filter envelope in semitones (with respect to the value of the "Freq" control).
+
+<li><strong>DurationByVelocity:</strong>
+With this parameter, you control how the velocity affects the duration/speed of the envelope. The unit is a factor by which all the envelope time-values are multiplied at a velocity of 127. An example: when "DurationByVelocity"  is set to 0.5, a velocity of 127 will lead to an envelope which is twice as fast as at a velocity of 64. At a velocity of 1 the envelope will be twice as slow. This paraemter is also scaled by "Accent".
+
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Frequency Modifiers:</strong>
+
+<ul>
+<li><strong>KeyTrack:</strong>
+Keytracking for filter frequency. The unit is octave/octave, that means: when the played not is one octave higher that a reference note, then the filter frequency will be "KeyTrack" octave higher than the "Freq"-value.
+
+<li><strong>RefKey:</strong>
+Such a keytracking needs a reference key - this is the key at which the filter frequency is unchanged. This reference key is adjusted here as MIDI note value.
+
+<li><strong>ModByInput:</strong>
+Modulation of the filter frequency by the filter input signal (filter-FM by the raw oscillator signal).
+
+<li><strong>ModByOutput:</strong>
+Modulation of the filter frequency by the filter output signal (feedback filter-FM).
+</ul>
+
+<p>
+<strong>Resonance Modifiers:</strong>
+<ul>
+<li><strong>FiltFreq:</strong>
+Often, higher cutoff-frequencies can take more resonance. That's why the resonance can be coupled to the filter-frequency with this control. When the filter-frequency is one octave higher that a referency-cutoff (fixed at 200 Hz), the resonance will be multiplied by a factor which is derived from this control.
+
+<li><strong>ModByInput:</strong>
+Modulation of the resonance by the filter input-signal.
+
+<li><strong>ModByOutput:</strong>
+Modulation of the resonance by the filter output-signal.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<center><h1>The Amplitude- and Distortion-Screen</h1></center>
+<br>
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Aggressor-AmpAndDistScreen856x456.jpg" width=856 height=456 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+<p>
+The filter output signal now goes into the amplifier section which provides two amplitude-envelopes and a distrotion unit in between. The reason for two amp-envelopes is: the first envelope is prior to the distortion unit in the signal chain and acts therefore more like a distortion drive envelope whereas the secon amp-envelope is behind the distrotion unit and therefore really controls the oveall volume.
+
+<p>
+<strong>Parameters for the Amplitude-Envelopes:</strong>
+<br>
+
+<ul>
+<li><strong>Start:</strong>
+Start-value of the envelope in dB.
+
+<li><strong>Attack:</strong>
+Time, the envelope needs to go from Start to Peak.
+
+<li><strong>Peak:</strong>
+Peak-value of the envelope in dB.
+
+<li><strong>Vel:</strong>
+Dependency of the peak-value on the velocity. At vel=64: peak-value is unchanged, at vel=1: peak-value is "Vel" dB lower, at vel=127: peak-value is "Vel" dB higher.
+
+<li><strong>Hold:</strong>
+Time, the amplitude stays at it's peak before beginnig the deacy-phase (in ms).
+
+<li><strong>Decay:</strong>
+Time to go from the peak-value to the sustain-value.
+
+<li><strong>Sustain:</strong>
+Sustain-value of the envelope in dB.
+
+<li><strong>Release:</strong>Time to go from the sustain-value to the end-value (which is zero amplitude) after the note has been released (in ms).
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Distortion Parameters:</strong>
+<br>
+
+<ul>
+<li><strong>Mode:</strong>
+Determines the characteristic line between the threshold and the saturation value.
+
+<li><strong>Drive:</strong>
+Signal boost (or attenuation) at the input of the distortion unit.
+
+<li><strong>AddDC:</strong>
+A DC offset can be added to the signal in order to drive the characteristic line in different regions.
+
+<li><strong>Low Thresh:</strong>
+Threshold for the distortion for the lower half wave (in dB).
+
+<li><strong>High Thresh:</strong>
+Threshold for the distortion for the upper half wave (in dB).
+
+<li><strong>Low Sat:</strong>
+The input-value, which is mapped to the output-value at "LowClamp". Higher (absolute) input values will also be mapped to "LowClamp".  Input values between "LowThresh" and "LowSat" will be mapped according to the characteristic line to output values between "Thresh" and "Clamp"
+
+
+<li><strong>High Sat:</strong>
+The same for the upper half-wave.
+
+<li><strong>Low Clamp:</strong>
+The output-value for input signals which reach/exceed "LowSat"
+
+<li><strong>High Clamp:</strong>
+The same for the upper half-wave.
+</ul>
+<p>
+Maybe, this explanation is not very intuitive. So i will give a picture of the resulting characteristic line of the distortion unit (here in the linear mode, which means that the transition above "Thresh" is a straight line)
+
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Distortion500x454.gif" width=500 height=454 alt=Dist-Characteristic>
+  </TD>
+ </TR>
+</TABLE>
+
+<p>
+Tip: symmetric characteristic lines create odd harmonics only whereas assymetric lines create even and odd harmonics.
+
+<ul>
+<li><strong>Rectify:</strong>
+Rectification of the signal where 0.5 is a one-way rectification and 1.0 is a full rectification.
+
+<li><strong>Dry/Wet:</strong>
+Mix ratio between distorted and clean signal.
+
+<li><strong>Vel:</strong>
+Dependency of this mix ratio on the velocity.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<center><h1>The Overview-Screen</h1></center>
+<br>
+<TABLE align=center>
+ <TR>
+  <TD>
+   <img src="screenshots/Aggressor-OverviewScreen856x456.jpg" width=856 height=456 alt=Screenshot>
+  </TD>
+ </TR>
+</TABLE>
+<p>
+This screen - as already mentioned - puts together the most important parameters from the 4 other screens. The level values of the oscillators are linked to the end-values of the corresponding amplitude-ramps. The same applies to the parameters for the modulations. The amplitude envelope is the first in the signal chain, i.e the one prior to the distortion unit.
+
+
+
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>...still to be translated: Tipps zur Programmierung von authentischen 303-Basslines:</strong>
+<br>
+Aggressor wurde anfangs eigentlich mit dem Ziel programmiert, möglichst authentische TB-303 Sounds zu erzeugen. Da jedoch im Laufe der Entwicklung immer mehr  Parameter und Features dazukamen, die es bei der 303 überhaupt nicht gibt, stellt sich jetzt möglicherweise für manchen Musiker die Frage, von welchen Parametern man lieber die Finger lassen sollte, wenn man möglichst nah an das Vorbild herankommen will. Daher hier eine entsprechende Liste mit do's und dont's: 
+
+<ul>
+<li>
+Eine TB-303 hat zwar keine Anschlagdynamik in dem Sinne, dass bestimmte Parameter velocity-abhängig gesteuert werden, wohl aber gibt es für jede einzelne Note die Möglichkeit einen <strong>"Accent"</strong> zu setzen. Im Prinzip entspricht das der Unterscheidung zwischen zwei Velocity-Stufen. Daher empfehle ich, sich zwei bestimmte Velocity Werte auszuwählen (z.B. 64 für nicht akzentuierte und 127 für akzentuierte Noten) und in der Bassline nur Noten mit diesen beiden Velocity-Werten zu nutzen. Natürlich könnte man mit Aggressor über verschiedene Zwischenwerte für jede einzelne Note die Stärke des Akzents bestimmen - man sollte sich dabei aber dessen bewusst sein, dass dies mit einer TB-303 nicht möglich wäre.
+
+<li>
+Wenn man einen <strong>"Slide"</strong> vollziehen möchte, dann könnte man die Note von der man startet so weit verlängern, bis sie sich mit der nachfolgenden überlappt (z.B. in einem Matrix-Editor). Dies hätte allerdings zur Folge, dass der Slide erst auf der Zählzeit der nachfolgenden Note beginnen würde. Die TB-303 dagegen erkennt schon vorher, dass ein Slide kommt, und beginnt dementsprechend früher damit. Ich habe es zwar nicht überprüft, nehme aber an, dass die TB-303 zu einer solchen Zeit mit dem Slide beginnt, dass die zu erreichende Note genau zu ihrer Zählzeit erreicht wird (zumindest wäre das einigermaßen sinnvoll). Wie auch immer - auf jeden Fall sollte man nicht die vorhergehende Note nach hinten verlängern sondern stattdessen die zu erreichende Note vorziehen - oder gegebenenfalls beides.
+
+<li>
+Generell hat es sich als ziemlich effektiv erwiesen, erstmal in einem Matrix-Editor einen Takt mit 16 16tel Note gleicher Länge und Velocity  64 vollzuschreiben und dann einzelne Noten zu verschieben, verlängern (für Slides), zu löschen und Akzente zu setzen (Velocity auf 127 setzen).
+
+<li><strong>Oszillator:</strong>
+Bei der Original TB-303 gibt es nur einen Oszillator, also sollte man auch bei Aggressor nur einen verwenden - allerdings besitzen zahlreiche 303-Clones einen Suboszillator, der meistens eine Oktake tiefer schwingt und eine Pulswelle erzeugt. Als Wellenform sollte man Saw-up oder Square auswählen und diese ein bisschen hochpassfiltern (z.B. bei 100 Hz). Das Hochpass bewirkt beim Sägezahn einen gewisse Asymmetrie in der Wellenform - diese sieht dann nicht mehr aus wie ein Sägezahn sondern wie eine Kondensator-Ladekurve, die immer wieder neu gestartet wird (kann man sich in Cubase mit dem (etwas älteren) Oszilloskop-PlugIn "Scopion" sehr schön ansehen). Ich vermute, dass diese Asymmetrie sich in Verbindung mit dem später folgenden Verzerrer entscheidend auf den Sound auswirkt. Um den Grundsound etwas weicher und "analoger" zu gestalten kann man auch mit dem Tiefpass experimentieren - muss man aber nicht. Die Start-Phase sollte man auf 180° stellen - dann ist der Anschlag des Sounds besonders hart. Die übrigen Parameter des Oszillators (Amp-Ramp, PW) sollte man neutral einstellen. Ein Wort zum Pitch-Envelope: Obwohl in vielen Tracks ein solcher Effekt zu hören ist, gibt es dieses Feature bei der 303 eigentlich nicht. Stattdessen wird eine Note z.B. eine Oktave höher angeschlagen, und dann unmittelbar danach dieselbe Note eine Oktave tiefer, ohne dabei natürlich die erste Note loszulassen - es wird also in Wirklichkeit von der Slide-Funktion Gebrauch gemacht. Also: auch Pitch-Envelope neutral einstellen.
+
+<li><strong>Filter:</strong>
+Den Modus für Authentizität auf 303 LPF stellen - allerdings lohnt sich hier das Experimentieren. <strong>CutoffByVelocity:</strong> Jetzt wird es etwas kompliziert: Ich habe festgestellt (anhand von Rebirth, da mir eine Original-Silberbox leider nicht zur Verfügung steht), dass der Filter-Envelope, unabhängig davon ob die Note "Accent" hat oder nicht, bei der gleichen (hohen) Frequenz startet. Wenn die Note keinen "Accent" hat, bleibt das Filter während der Note mehr oder weniger bei dieser Frequenz. Bei akzentuierten Noten allerdings sweept das Filter runter, anstatt auf dieser Frequenz stehenzubleiben. Dies kann mit Aggressor nachgeahmt werden, indem man "CutoffByVelo" auf einen negativen Wert einstellt und gleichzeitig "FiltPeakByVel" auf genau den gleichen, aber positiven Wert einstellt. Der negative Wert von "CutoffByVel" bewirkt dabei, dass Noten mit Velocity 127 eine niedrigere Cutoff-Frequenz bekommen, der positive Wert von FiltPeakByVel gleicht dies aber am Anfang der Note aus. Also insgesamt: am Notenanfang gleiche Cutoff-Frequenzen, bei akzentuierten Noten ist Cutoff jedoch am Notenende runtergesweept. Als Nebeneffekt tritt hierbei in Erscheinung, dass für Noten mit Velocity-Werten kleiner als 64 die Cutoff-Frequenz zum Notenende hin hochsweept - da ich aber davon ausgehe, dass sowieso nur Noten mit Velocity 64 und 127 benutzt werden ist dies nicht störend. <strong>ResoByVelocity:</strong> Sinnvolle Werte hierfür sind stark abhängig von der eingestellten Resonanz. Wenn die Resonanz sowieso schon sehr hoch ist, dann genügen hier geringe Werte. <strong>Envelope-Start:</strong> Ich denke, 0 semitones ist hier recht sinnvoll, aber ausprobieren schadet nicht. <strong>Envelope-Attack:</strong> Eine einstellbare Attackzeit für den Filter-Envelope gibt es bei der 303 nicht (es sei denn man hat eine mit Devil-Fish Modifikation), diese ist offensichtlich vom Hersteller fest voreingestellt. Mir scheint sie jedenfalls relativ kurz zu sein. Man sollte vielleicht mit Werten zwischen 5 und 20 ms experimentieren. Grundsätzlich gilt: je länger die Attack-Zeit, desto mehr wird aus einem "äuh" ein "wäuh" (Freaks wissen wovon ich rede - alle anderen merken es beim ausprobieren). Für besonders perkussive und damit auch aggressive Sounds kann man die Attack Zeit natürlich auch ganz auf Null stellen, so dass der Envelope gleich ganz oben auf seinem Peak beginnt. <strong>Peak:</strong> Hier ist man relativ frei. Ich finde Werte zwischen 5 und 20 semitones am besten. <strong>Vel:</strong> Hier sollte man - wie gesagt - einen Wert einstellen, der das Absenken der Cutoff-Frequenz bei hohen Velocity-Werten (durch entsprechende Einstellung von CutoffByVel)  am Notenanfang genau kompensiert. <strong>Decay:</strong> Hier ist man auch recht frei. Für perkussive Sounds sind Werte bis zu 200 ms ganz gut, längere Decay-Zeiten für langsam sweepende Sounds. <strong>End:</strong> 0 <strong>DurationByVelocity:</strong> zwischen 0.2 und 1.0
+
+<li><strong>Amplitude-Envelope:</strong>
+303 Sounds zeichnen sich durch eine recht perkussive Amplitudenhüllkurve aus, d.h. die Hüllkurve beginnt bei einem recht hohen Wert (z.B. 6-12 dB) und klingt dann auch ziemlich schnell wieder ab. <strong>AmpEnv1Start:</strong> 0 dB. <strong>AmpEnv1Attack:</strong> 2 ms (bei noch kürzeren Attack-Zeiten ist ein Knacken hörbar, wenn eine neue Note angeschlagen wird, die vorhergehende jedoch ihre Release-Phase noch nicht beendet hat). <strong>AmpEnv1Peak:</strong> ca. 12 dB. <strong>AmpEnv1Decay:</strong> um die 130 ms. <strong>AmpEnv1Sustain:</strong> wenn bei Decay 130 ms eingestellt ist sind hier 0 dB ganz gut, um perkussivere Klänge zu erhalten, kann man hier auch einen deutlich niedrigeren Wert einstellen. Dann wird allerdings meistens das Verlängern der Decay-Zeit notwendig, um überhaupt noch irgendwas tonales zu hören. <strong>AmpEnv1Release:</strong> möglichst kurz, aber ohne das es beim Note-Off knackt - z.B. 16 ms <strong>Distortion:</strong> Geschmackssache. Ein einfaches symmetrisches Clipping erzielt man, indem man alle Werte (für Threshold, Saturation und Clamp Level) auf denselben Wert (z.B. 0 dB) setzt und dann mit Drive die Stärke des Clippings steuert. <strong>AmpEnv2:</strong> Einen zweiten Amplituden-Envelope gibt es bei der 303 nicht. Also neutral einstellen.
+
+<li><strong>VolByVel:</strong>
+Da bei einer TB-303 akzentuierte Noten (unter anderem) um fast 12 dB lauter sind als nicht akzentuierte (wieder gemessen anhand von Rebirth), könnte man hier auch einen Wert von um die 12 dB einstellen - allerdings empfehle ich geringere Werte, da diese Velocity-Abhängigkeit bei Aggressor erst nach dem Verzerrer greift. Alternativ könnte man auch auch die Maximalauslenkung der ersten Amplitudenhüllkurve um +- 12 dB von der Velocity skalieren lassen (dies greift dann vor dem Verzerrer) - oder am besten eine Kombination aus beidem. ...und dann natürlich Noten mit Velocity = 64 und Velocity = 127 benutzen.
+</ul>
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+<strong>Einige technische Details für Sounddesign-Freaks und andere Synthi-Entwickler:</strong>
+<br>
+Die interne Signalverarbeitung von Aggressor erfolgt  ausnahmslos in 64-Bit Floating-Point Arithmetik. Sämtliche Hüllkurven und auch die LFO's werden mit Samplerate ausgelesen und die hüllkurvengesteuerten Parameter dann natürlich auch mit Samplerate aktualisiert. Das bedeutet unter Anderem, dass für jeden Abtastwert neue Filterkoeffizienten berechnet werden müssen. Dies ist durchaus nicht selbstverständlich - bei vielen digitalen Synthesizern (und Synthesesprachen wie z.B. CSound) gibt es eine Unterscheidung zwischen der Rate, mit der Audiodaten berechnet werden ("Audio-Rate" bzw. "Sample-Rate") und der Rate, mit der Kontrolldaten (Envelopes, LFO's, etc.)  berechnet werden ("Control-Rate"). Meiner Meinung nach sind dies die beiden hauptsächlichen Ursachen dafür, dass Aggressor für einen monphonen Synthesizer so viel Rechenleistung in Anspruch nimmt. Außerdem schlägt das Oversampling beim Moog- und 303-Filter ziemlich heftig zu Buche. Bei den Oszillatoren kommen linear interpolierende Table-Lookup Oszillatoren zum Einsatz - ist zwar nicht das Nonplusultra, da in höheren Lagen Aliasing hörbar wird - aber dafür relativ effizient. Ich hatte mit dem Gedanken gespielt auch hier mit Oversampling + Filterung oder irgendeiner Form von bandbegrenzender Synthese zu arbeiten, hielt das aber dann doch für Overkill, da Aggressor ja eh mehr für den Bassbereich gedacht ist.
+
+<p>
+<hr width="95%" size="2" noshade>
+<p>
+Viel Spaß beim Mucke machen wünscht Braindoc.
+
+</body>
+</html>
